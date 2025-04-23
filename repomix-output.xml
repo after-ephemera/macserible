@@ -1,0 +1,2176 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+<additional_info>
+
+</additional_info>
+
+</file_summary>
+
+<directory_structure>
+.github/
+  workflows/
+    ci.yml
+  FUNDING.yml
+  stale.yml
+files/
+  sublime/
+    Cobalt (SL).tmTheme
+    Markdown.sublime-settings
+    Plain text.sublime-settings
+    Preferences.sublime-settings
+    WordCount.sublime-settings
+  terminal/
+    JJG-Term.terminal
+tasks/
+  extra-packages.yml
+  omzsh.yml
+  osx.yml
+  sublime-text.yml
+  sudoers.yml
+  terminal.yml
+templates/
+  Package_Control.sublime-settings.j2
+tests/
+  ansible.cfg
+  inventory
+  uninstall-homebrew.sh
+.ansible-lint
+.gitignore
+.yamllint
+ansible.cfg
+default.config.yml
+full-mac-setup.md
+inventory
+LICENSE
+main.yml
+README.md
+requirements.yml
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+*.vagrant
+.DS_Store
+*.retry
+roles*
+config.yml
+</file>
+
+<file path="LICENSE">
+Copyright (c) 2013 Michael Griffin
+http://mwgriffin.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</file>
+
+<file path=".github/stale.yml">
+# Configuration for probot-stale - https://github.com/probot/stale
+
+# Number of days of inactivity before an Issue or Pull Request becomes stale
+daysUntilStale: 90
+
+# Number of days of inactivity before an Issue or Pull Request with the stale label is closed.
+# Set to false to disable. If disabled, issues still need to be closed manually, but will remain marked as stale.
+daysUntilClose: 30
+
+# Only issues or pull requests with all of these labels are check if stale. Defaults to `[]` (disabled)
+onlyLabels: []
+
+# Issues or Pull Requests with these labels will never be considered stale. Set to `[]` to disable
+exemptLabels:
+  - pinned
+  - security
+  - planned
+
+# Set to true to ignore issues in a project (defaults to false)
+exemptProjects: false
+
+# Set to true to ignore issues in a milestone (defaults to false)
+exemptMilestones: false
+
+# Set to true to ignore issues with an assignee (defaults to false)
+exemptAssignees: false
+
+# Label to use when marking as stale
+staleLabel: stale
+
+# Limit the number of actions per hour, from 1-30. Default is 30
+limitPerRun: 30
+
+pulls:
+  markComment: |-
+    This pull request has been marked 'stale' due to lack of recent activity. If there is no further activity, the PR will be closed in another 30 days. Thank you for your contribution!
+
+    Please read [this blog post](https://www.jeffgeerling.com/blog/2020/enabling-stale-issue-bot-on-my-github-repositories) to see the reasons why I mark pull requests as stale.
+
+  unmarkComment: >-
+    This pull request is no longer marked for closure.
+
+  closeComment: >-
+    This pull request has been closed due to inactivity. If you feel this is in error, please reopen the pull request or file a new PR with the relevant details.
+
+issues:
+  markComment: |-
+    This issue has been marked 'stale' due to lack of recent activity. If there is no further activity, the issue will be closed in another 30 days. Thank you for your contribution!
+
+    Please read [this blog post](https://www.jeffgeerling.com/blog/2020/enabling-stale-issue-bot-on-my-github-repositories) to see the reasons why I mark issues as stale.
+
+  unmarkComment: >-
+    This issue is no longer marked for closure.
+
+  closeComment: >-
+    This issue has been closed due to inactivity. If you feel this is in error, please reopen the issue or file a new issue with the relevant details.
+</file>
+
+<file path="files/sublime/Cobalt (SL).tmTheme">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>comment</key>
+	<string>Created by Jacob Rus.  Based on ‘Slate’ by Wilson Miner</string>
+	<key>author</key>
+	<string>Jacob Rus</string>
+	<key>name</key>
+	<string>Cobalt</string>
+	<key>settings</key>
+	<array>
+		<dict>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#002240</string>
+				<key>caret</key>
+				<string>#FFFFFF</string>
+				<key>foreground</key>
+				<string>#FFFFFF</string>
+				<key>invisibles</key>
+				<string>#FFFFFF26</string>
+				<key>lineHighlight</key>
+				<string>#00000059</string>
+				<key>selection</key>
+				<string>#B36539BF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Punctuation</string>
+			<key>scope</key>
+			<string>punctuation - (punctuation.definition.string || punctuation.definition.comment)</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#E1EFFF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Constant</string>
+			<key>scope</key>
+			<string>constant</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#FF628C</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Entity</string>
+			<key>scope</key>
+			<string>entity</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#FFDD00</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Keyword</string>
+			<key>scope</key>
+			<string>keyword</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#FF9D00</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Storage</string>
+			<key>scope</key>
+			<string>storage</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#FFEE80</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String</string>
+			<key>scope</key>
+			<string>string -string.unquoted.old-plist -string.unquoted.heredoc, string.unquoted.heredoc string</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#3AD900</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Comment</string>
+			<key>scope</key>
+			<string>comment</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#0088FF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Support</string>
+			<key>scope</key>
+			<string>support</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#80FFBB</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Variable</string>
+			<key>scope</key>
+			<string>variable</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#CCCCCC</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Lang Variable</string>
+			<key>scope</key>
+			<string>variable.language</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#FF80E1</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Function Call</string>
+			<key>scope</key>
+			<string>meta.function-call</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#FFEE80</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Invalid</string>
+			<key>scope</key>
+			<string>invalid</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#800F00</string>
+				<key>foreground</key>
+				<string>#F8F8F8</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Embedded Source</string>
+			<key>scope</key>
+			<string>text source, string.unquoted.heredoc, source source</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#223545</string>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#FFFFFF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Entity inherited-class</string>
+			<key>scope</key>
+			<string>entity.other.inherited-class</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#80FCFF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String embedded-source</string>
+			<key>scope</key>
+			<string>string.quoted source</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#9EFF80</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String constant</string>
+			<key>scope</key>
+			<string>string constant</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#80FF82</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String.regexp</string>
+			<key>scope</key>
+			<string>string.regexp</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#80FFC2</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String variable</string>
+			<key>scope</key>
+			<string>string variable</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#EDEF7D</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Support.function</string>
+			<key>scope</key>
+			<string>support.function</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#FFB054</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Support.constant</string>
+			<key>scope</key>
+			<string>support.constant</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#EB939A</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Exception</string>
+			<key>scope</key>
+			<string>support.type.exception</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#FF1E00</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>C/C++ Preprocessor Line</string>
+			<key>scope</key>
+			<string>meta.preprocessor.c</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#8996A8</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>C/C++ Preprocessor Directive</string>
+			<key>scope</key>
+			<string>meta.preprocessor.c keyword</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#AFC4DB</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Doctype/XML Processing</string>
+			<key>scope</key>
+			<string>meta.sgml.html meta.doctype, meta.sgml.html meta.doctype entity, meta.sgml.html meta.doctype string, meta.xml-processing, meta.xml-processing entity, meta.xml-processing string</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#73817D</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Meta.tag.A</string>
+			<key>scope</key>
+			<string>meta.tag, meta.tag entity</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#9EFFFF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>css tag-name</string>
+			<key>scope</key>
+			<string>meta.selector.css entity.name.tag</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#9EFFFF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>css#id</string>
+			<key>scope</key>
+			<string>meta.selector.css entity.other.attribute-name.id</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#FFB454</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>css.class</string>
+			<key>scope</key>
+			<string>meta.selector.css entity.other.attribute-name.class</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#5FE461</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>css property-name:</string>
+			<key>scope</key>
+			<string>support.type.property-name.css</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#9DF39F</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>css property-value;</string>
+			<key>scope</key>
+			<string>meta.property-group support.constant.property-value.css, meta.property-value support.constant.property-value.css</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#F6F080</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>css @at-rule</string>
+			<key>scope</key>
+			<string>meta.preprocessor.at-rule keyword.control.at-rule</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#F6AA11</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>css additional-constants</string>
+			<key>scope</key>
+			<string>meta.property-value support.constant.named-color.css, meta.property-value constant</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#EDF080</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>css constructor.argument</string>
+			<key>scope</key>
+			<string>meta.constructor.argument.css</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#EB939A</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>diff.header</string>
+			<key>scope</key>
+			<string>meta.diff, meta.diff.header</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#000E1A</string>
+				<key>fontStyle</key>
+				<string />
+				<key>foreground</key>
+				<string>#F8F8F8</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>diff.deleted</string>
+			<key>scope</key>
+			<string>markup.deleted</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#4C0900</string>
+				<key>foreground</key>
+				<string>#F8F8F8</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>diff.changed</string>
+			<key>scope</key>
+			<string>markup.changed</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#806F00</string>
+				<key>foreground</key>
+				<string>#F8F8F8</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>diff.inserted</string>
+			<key>scope</key>
+			<string>markup.inserted</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#154F00</string>
+				<key>foreground</key>
+				<string>#F8F8F8</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Raw Markup</string>
+			<key>scope</key>
+			<string>markup.raw</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#8FDDF630</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Block Quote</string>
+			<key>scope</key>
+			<string>markup.quote</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#004480</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>List</string>
+			<key>scope</key>
+			<string>markup.list</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#130D26</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Bold Markup</string>
+			<key>scope</key>
+			<string>markup.bold</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#C1AFFF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Italic Markup</string>
+			<key>scope</key>
+			<string>markup.italic</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#B8FFD9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Heading Markup</string>
+			<key>scope</key>
+			<string>markup.heading</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#001221</string>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#C8E4FD</string>
+			</dict>
+		</dict>
+	<dict>
+            <key>name</key>
+            <string>SublimeLinter Error</string>
+            <key>scope</key>
+            <string>sublimelinter.mark.error</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#DA2000</string>
+            </dict>
+        </dict><dict>
+            <key>name</key>
+            <string>SublimeLinter Warning</string>
+            <key>scope</key>
+            <string>sublimelinter.mark.warning</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#EDBA00</string>
+            </dict>
+        </dict><dict>
+            <key>name</key>
+            <string>SublimeLinter Gutter Mark</string>
+            <key>scope</key>
+            <string>sublimelinter.gutter-mark</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#FFFFFF</string>
+            </dict>
+        </dict></array>
+	<key>uuid</key>
+	<string>06CD1FB2-A00A-4F8C-97B2-60E131980454</string>
+</dict>
+</plist>
+</file>
+
+<file path="files/sublime/Markdown.sublime-settings">
+{
+	"auto_complete": false,
+	"extensions":
+	[
+		"txt"
+	]
+}
+</file>
+
+<file path="files/sublime/Plain text.sublime-settings">
+{
+	"extensions":
+	[
+	]
+}
+</file>
+
+<file path="files/sublime/WordCount.sublime-settings">
+{
+  "whitelist_syntaxes": ["Plain text", "Markdown"]
+}
+</file>
+
+<file path="files/terminal/JJG-Term.terminal">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ANSIBlackColor</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGmCwwXHR4lVSRudWxs1Q0ODxAR
+	EhMUFRZcTlNDb21wb25lbnRzVU5TUkdCXE5TQ29sb3JTcGFjZV8QEk5TQ3VzdG9tQ29s
+	b3JTcGFjZVYkY2xhc3NPECgwLjM4NDE0MzI4NDQgMC4zOTIzMTY1NDU4IDAuMzkyMzE2
+	NTQ1OCAxTxAmMC4zMTA5OTExNjggMC4zMTg2NzQ4NjI0IDAuMzE4NTE0MDQ5MQAQAYAC
+	gAXTGBkRGhscVE5TSURVTlNJQ0MQB4ADgARPEQxIAAAMSExpbm8CEAAAbW50clJHQiBY
+	WVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAAAAPbW
+	AAEAAAAA0y1IUCAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAARY3BydAAAAVAAAAAzZGVzYwAAAYQAAABsd3RwdAAAAfAAAAAUYmtwdAAA
+	AgQAAAAUclhZWgAAAhgAAAAUZ1hZWgAAAiwAAAAUYlhZWgAAAkAAAAAUZG1uZAAAAlQA
+	AABwZG1kZAAAAsQAAACIdnVlZAAAA0wAAACGdmlldwAAA9QAAAAkbHVtaQAAA/gAAAAU
+	bWVhcwAABAwAAAAkdGVjaAAABDAAAAAMclRSQwAABDwAAAgMZ1RSQwAABDwAAAgMYlRS
+	QwAABDwAAAgMdGV4dAAAAABDb3B5cmlnaHQgKGMpIDE5OTggSGV3bGV0dC1QYWNrYXJk
+	IENvbXBhbnkAAGRlc2MAAAAAAAAAEnNSR0IgSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAS
+	c1JHQiBJRUM2MTk2Ni0yLjEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAADzUQABAAAAARbMWFlaIAAAAAAAAAAAAAAA
+	AAAAAABYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAA
+	AAAAACSgAAAPhAAAts9kZXNjAAAAAAAAABZJRUMgaHR0cDovL3d3dy5pZWMuY2gAAAAA
+	AAAAAAAAABZJRUMgaHR0cDovL3d3dy5pZWMuY2gAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZGVzYwAAAAAAAAAuSUVDIDYxOTY2LTIuMSBE
+	ZWZhdWx0IFJHQiBjb2xvdXIgc3BhY2UgLSBzUkdCAAAAAAAAAAAAAAAuSUVDIDYxOTY2
+	LTIuMSBEZWZhdWx0IFJHQiBjb2xvdXIgc3BhY2UgLSBzUkdCAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAGRlc2MAAAAAAAAALFJlZmVyZW5jZSBWaWV3aW5nIENvbmRpdGlvbiBpbiBJ
+	RUM2MTk2Ni0yLjEAAAAAAAAAAAAAACxSZWZlcmVuY2UgVmlld2luZyBDb25kaXRpb24g
+	aW4gSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB2aWV3AAAAAAAT
+	pP4AFF8uABDPFAAD7cwABBMLAANcngAAAAFYWVogAAAAAABMCVYAUAAAAFcf521lYXMA
+	AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAKPAAAAAnNpZyAAAAAAQ1JUIGN1cnYAAAAA
+	AAAEAAAAAAUACgAPABQAGQAeACMAKAAtADIANwA7AEAARQBKAE8AVABZAF4AYwBoAG0A
+	cgB3AHwAgQCGAIsAkACVAJoAnwCkAKkArgCyALcAvADBAMYAywDQANUA2wDgAOUA6wDw
+	APYA+wEBAQcBDQETARkBHwElASsBMgE4AT4BRQFMAVIBWQFgAWcBbgF1AXwBgwGLAZIB
+	mgGhAakBsQG5AcEByQHRAdkB4QHpAfIB+gIDAgwCFAIdAiYCLwI4AkECSwJUAl0CZwJx
+	AnoChAKOApgCogKsArYCwQLLAtUC4ALrAvUDAAMLAxYDIQMtAzgDQwNPA1oDZgNyA34D
+	igOWA6IDrgO6A8cD0wPgA+wD+QQGBBMEIAQtBDsESARVBGMEcQR+BIwEmgSoBLYExATT
+	BOEE8AT+BQ0FHAUrBToFSQVYBWcFdwWGBZYFpgW1BcUF1QXlBfYGBgYWBicGNwZIBlkG
+	agZ7BowGnQavBsAG0QbjBvUHBwcZBysHPQdPB2EHdAeGB5kHrAe/B9IH5Qf4CAsIHwgy
+	CEYIWghuCIIIlgiqCL4I0gjnCPsJEAklCToJTwlkCXkJjwmkCboJzwnlCfsKEQonCj0K
+	VApqCoEKmAquCsUK3ArzCwsLIgs5C1ELaQuAC5gLsAvIC+EL+QwSDCoMQwxcDHUMjgyn
+	DMAM2QzzDQ0NJg1ADVoNdA2ODakNww3eDfgOEw4uDkkOZA5/DpsOtg7SDu4PCQ8lD0EP
+	Xg96D5YPsw/PD+wQCRAmEEMQYRB+EJsQuRDXEPURExExEU8RbRGMEaoRyRHoEgcSJhJF
+	EmQShBKjEsMS4xMDEyMTQxNjE4MTpBPFE+UUBhQnFEkUahSLFK0UzhTwFRIVNBVWFXgV
+	mxW9FeAWAxYmFkkWbBaPFrIW1hb6Fx0XQRdlF4kXrhfSF/cYGxhAGGUYihivGNUY+hkg
+	GUUZaxmRGbcZ3RoEGioaURp3Gp4axRrsGxQbOxtjG4obshvaHAIcKhxSHHscoxzMHPUd
+	Hh1HHXAdmR3DHeweFh5AHmoelB6+HukfEx8+H2kflB+/H+ogFSBBIGwgmCDEIPAhHCFI
+	IXUhoSHOIfsiJyJVIoIiryLdIwojOCNmI5QjwiPwJB8kTSR8JKsk2iUJJTglaCWXJccl
+	9yYnJlcmhya3JugnGCdJJ3onqyfcKA0oPyhxKKIo1CkGKTgpaymdKdAqAio1KmgqmyrP
+	KwIrNitpK50r0SwFLDksbiyiLNctDC1BLXYtqy3hLhYuTC6CLrcu7i8kL1ovkS/HL/4w
+	NTBsMKQw2zESMUoxgjG6MfIyKjJjMpsy1DMNM0YzfzO4M/E0KzRlNJ402DUTNU01hzXC
+	Nf02NzZyNq426TckN2A3nDfXOBQ4UDiMOMg5BTlCOX85vDn5OjY6dDqyOu87LTtrO6o7
+	6DwnPGU8pDzjPSI9YT2hPeA+ID5gPqA+4D8hP2E/oj/iQCNAZECmQOdBKUFqQaxB7kIw
+	QnJCtUL3QzpDfUPARANER0SKRM5FEkVVRZpF3kYiRmdGq0bwRzVHe0fASAVIS0iRSNdJ
+	HUljSalJ8Eo3Sn1KxEsMS1NLmkviTCpMcky6TQJNSk2TTdxOJU5uTrdPAE9JT5NP3VAn
+	UHFQu1EGUVBRm1HmUjFSfFLHUxNTX1OqU/ZUQlSPVNtVKFV1VcJWD1ZcVqlW91dEV5JX
+	4FgvWH1Yy1kaWWlZuFoHWlZaplr1W0VblVvlXDVchlzWXSddeF3JXhpebF69Xw9fYV+z
+	YAVgV2CqYPxhT2GiYfViSWKcYvBjQ2OXY+tkQGSUZOllPWWSZedmPWaSZuhnPWeTZ+lo
+	P2iWaOxpQ2maafFqSGqfavdrT2una/9sV2yvbQhtYG25bhJua27Ebx5veG/RcCtwhnDg
+	cTpxlXHwcktypnMBc11zuHQUdHB0zHUodYV14XY+dpt2+HdWd7N4EXhueMx5KnmJeed6
+	RnqlewR7Y3vCfCF8gXzhfUF9oX4BfmJ+wn8jf4R/5YBHgKiBCoFrgc2CMIKSgvSDV4O6
+	hB2EgITjhUeFq4YOhnKG14c7h5+IBIhpiM6JM4mZif6KZIrKizCLlov8jGOMyo0xjZiN
+	/45mjs6PNo+ekAaQbpDWkT+RqJIRknqS45NNk7aUIJSKlPSVX5XJljSWn5cKl3WX4JhM
+	mLiZJJmQmfyaaJrVm0Kbr5wcnImc951kndKeQJ6unx2fi5/6oGmg2KFHobaiJqKWowaj
+	dqPmpFakx6U4pammGqaLpv2nbqfgqFKoxKk3qamqHKqPqwKrdavprFys0K1ErbiuLa6h
+	rxavi7AAsHWw6rFgsdayS7LCszizrrQltJy1E7WKtgG2ebbwt2i34LhZuNG5SrnCuju6
+	tbsuu6e8IbybvRW9j74KvoS+/796v/XAcMDswWfB48JfwtvDWMPUxFHEzsVLxcjGRsbD
+	x0HHv8g9yLzJOsm5yjjKt8s2y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TT
+	xtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp22vvbgNwF3IrdEN2W3hzeot8p36/gNuC9
+	4UThzOJT4tvjY+Pr5HPk/OWE5g3mlucf56noMui86Ubp0Opb6uXrcOv77IbtEe2c7iju
+	tO9A78zwWPDl8XLx//KM8xnzp/Q09ML1UPXe9m32+/eK+Bn4qPk4+cf6V/rn+3f8B/yY
+	/Sn9uv5L/tz/bf//0h8gISJaJGNsYXNzbmFtZVgkY2xhc3Nlc1xOU0NvbG9yU3BhY2Wi
+	IyRcTlNDb2xvclNwYWNlWE5TT2JqZWN00h8gJidXTlNDb2xvcqImJAAIABEAGgAkACkA
+	MgA3AEkATABRAFMAWgBgAGsAeAB+AIsAoACnANIA+wD9AP8BAQEIAQ0BEwEVARcBGQ1l
+	DWoNdQ1+DYsNjg2bDaQNqQ2xAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAADbQ=
+	</data>
+	<key>ANSIBrightBlackColor</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGmCwwXHR4lVSRudWxs1Q0ODxAR
+	EhMUFRZcTlNDb21wb25lbnRzVU5TUkdCXE5TQ29sb3JTcGFjZV8QEk5TQ3VzdG9tQ29s
+	b3JTcGFjZVYkY2xhc3NPECgwLjU5MjQ0MjEwMzggMC41OTI0NDIxMDM4IDAuNTkyNDQy
+	MTAzOCAxTxAnMC41MjE1MTQ1OTQ2IDAuNTIxNDk5MDM3NyAwLjUyMTUwNzc5OTYAEAGA
+	AoAF0xgZERobHFROU0lEVU5TSUNDEAeAA4AETxEMSAAADEhMaW5vAhAAAG1udHJSR0Ig
+	WFlaIAfOAAIACQAGADEAAGFjc3BNU0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD2
+	1gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQAAAHwAAAAFGJrcHQA
+	AAIEAAAAFHJYWVoAAAIYAAAAFGdYWVoAAAIsAAAAFGJYWVoAAAJAAAAAFGRtbmQAAAJU
+	AAAAcGRtZGQAAALEAAAAiHZ1ZWQAAANMAAAAhnZpZXcAAAPUAAAAJGx1bWkAAAP4AAAA
+	FG1lYXMAAAQMAAAAJHRlY2gAAAQwAAAADHJUUkMAAAQ8AAAIDGdUUkMAAAQ8AAAIDGJU
+	UkMAAAQ8AAAIDHRleHQAAAAAQ29weXJpZ2h0IChjKSAxOTk4IEhld2xldHQtUGFja2Fy
+	ZCBDb21wYW55AABkZXNjAAAAAAAAABJzUkdCIElFQzYxOTY2LTIuMQAAAAAAAAAAAAAA
+	EnNSR0IgSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAABYWVogAAAAAAAA81EAAQAAAAEWzFhZWiAAAAAAAAAAAAAA
+	AAAAAAAAWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZWiAA
+	AAAAAAAkoAAAD4QAALbPZGVzYwAAAAAAAAAWSUVDIGh0dHA6Ly93d3cuaWVjLmNoAAAA
+	AAAAAAAAAAAWSUVDIGh0dHA6Ly93d3cuaWVjLmNoAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGRlc2MAAAAAAAAALklFQyA2MTk2Ni0yLjEg
+	RGVmYXVsdCBSR0IgY29sb3VyIHNwYWNlIC0gc1JHQgAAAAAAAAAAAAAALklFQyA2MTk2
+	Ni0yLjEgRGVmYXVsdCBSR0IgY29sb3VyIHNwYWNlIC0gc1JHQgAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAABkZXNjAAAAAAAAACxSZWZlcmVuY2UgVmlld2luZyBDb25kaXRpb24gaW4g
+	SUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAsUmVmZXJlbmNlIFZpZXdpbmcgQ29uZGl0aW9u
+	IGluIElFQzYxOTY2LTIuMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdmlldwAAAAAA
+	E6T+ABRfLgAQzxQAA+3MAAQTCwADXJ4AAAABWFlaIAAAAAAATAlWAFAAAABXH+dtZWFz
+	AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACjwAAAAJzaWcgAAAAAENSVCBjdXJ2AAAA
+	AAAABAAAAAAFAAoADwAUABkAHgAjACgALQAyADcAOwBAAEUASgBPAFQAWQBeAGMAaABt
+	AHIAdwB8AIEAhgCLAJAAlQCaAJ8ApACpAK4AsgC3ALwAwQDGAMsA0ADVANsA4ADlAOsA
+	8AD2APsBAQEHAQ0BEwEZAR8BJQErATIBOAE+AUUBTAFSAVkBYAFnAW4BdQF8AYMBiwGS
+	AZoBoQGpAbEBuQHBAckB0QHZAeEB6QHyAfoCAwIMAhQCHQImAi8COAJBAksCVAJdAmcC
+	cQJ6AoQCjgKYAqICrAK2AsECywLVAuAC6wL1AwADCwMWAyEDLQM4A0MDTwNaA2YDcgN+
+	A4oDlgOiA64DugPHA9MD4APsA/kEBgQTBCAELQQ7BEgEVQRjBHEEfgSMBJoEqAS2BMQE
+	0wThBPAE/gUNBRwFKwU6BUkFWAVnBXcFhgWWBaYFtQXFBdUF5QX2BgYGFgYnBjcGSAZZ
+	BmoGewaMBp0GrwbABtEG4wb1BwcHGQcrBz0HTwdhB3QHhgeZB6wHvwfSB+UH+AgLCB8I
+	MghGCFoIbgiCCJYIqgi+CNII5wj7CRAJJQk6CU8JZAl5CY8JpAm6Cc8J5Qn7ChEKJwo9
+	ClQKagqBCpgKrgrFCtwK8wsLCyILOQtRC2kLgAuYC7ALyAvhC/kMEgwqDEMMXAx1DI4M
+	pwzADNkM8w0NDSYNQA1aDXQNjg2pDcMN3g34DhMOLg5JDmQOfw6bDrYO0g7uDwkPJQ9B
+	D14Peg+WD7MPzw/sEAkQJhBDEGEQfhCbELkQ1xD1ERMRMRFPEW0RjBGqEckR6BIHEiYS
+	RRJkEoQSoxLDEuMTAxMjE0MTYxODE6QTxRPlFAYUJxRJFGoUixStFM4U8BUSFTQVVhV4
+	FZsVvRXgFgMWJhZJFmwWjxayFtYW+hcdF0EXZReJF64X0hf3GBsYQBhlGIoYrxjVGPoZ
+	IBlFGWsZkRm3Gd0aBBoqGlEadxqeGsUa7BsUGzsbYxuKG7Ib2hwCHCocUhx7HKMczBz1
+	HR4dRx1wHZkdwx3sHhYeQB5qHpQevh7pHxMfPh9pH5Qfvx/qIBUgQSBsIJggxCDwIRwh
+	SCF1IaEhziH7IiciVSKCIq8i3SMKIzgjZiOUI8Ij8CQfJE0kfCSrJNolCSU4JWgllyXH
+	JfcmJyZXJocmtyboJxgnSSd6J6sn3CgNKD8ocSiiKNQpBik4KWspnSnQKgIqNSpoKpsq
+	zysCKzYraSudK9EsBSw5LG4soizXLQwtQS12Last4S4WLkwugi63Lu4vJC9aL5Evxy/+
+	MDUwbDCkMNsxEjFKMYIxujHyMioyYzKbMtQzDTNGM38zuDPxNCs0ZTSeNNg1EzVNNYc1
+	wjX9Njc2cjauNuk3JDdgN5w31zgUOFA4jDjIOQU5Qjl/Obw5+To2OnQ6sjrvOy07azuq
+	O+g8JzxlPKQ84z0iPWE9oT3gPiA+YD6gPuA/IT9hP6I/4kAjQGRApkDnQSlBakGsQe5C
+	MEJyQrVC90M6Q31DwEQDREdEikTORRJFVUWaRd5GIkZnRqtG8Ec1R3tHwEgFSEtIkUjX
+	SR1JY0mpSfBKN0p9SsRLDEtTS5pL4kwqTHJMuk0CTUpNk03cTiVObk63TwBPSU+TT91Q
+	J1BxULtRBlFQUZtR5lIxUnxSx1MTU19TqlP2VEJUj1TbVShVdVXCVg9WXFapVvdXRFeS
+	V+BYL1h9WMtZGllpWbhaB1pWWqZa9VtFW5Vb5Vw1XIZc1l0nXXhdyV4aXmxevV8PX2Ff
+	s2AFYFdgqmD8YU9homH1YklinGLwY0Njl2PrZEBklGTpZT1lkmXnZj1mkmboZz1nk2fp
+	aD9olmjsaUNpmmnxakhqn2r3a09rp2v/bFdsr20IbWBtuW4SbmtuxG8eb3hv0XArcIZw
+	4HE6cZVx8HJLcqZzAXNdc7h0FHRwdMx1KHWFdeF2Pnabdvh3VnezeBF4bnjMeSp5iXnn
+	ekZ6pXsEe2N7wnwhfIF84X1BfaF+AX5ifsJ/I3+Ef+WAR4CogQqBa4HNgjCCkoL0g1eD
+	uoQdhICE44VHhauGDoZyhteHO4efiASIaYjOiTOJmYn+imSKyoswi5aL/IxjjMqNMY2Y
+	jf+OZo7OjzaPnpAGkG6Q1pE/kaiSEZJ6kuOTTZO2lCCUipT0lV+VyZY0lp+XCpd1l+CY
+	TJi4mSSZkJn8mmia1ZtCm6+cHJyJnPedZJ3SnkCerp8dn4uf+qBpoNihR6G2oiailqMG
+	o3aj5qRWpMelOKWpphqmi6b9p26n4KhSqMSpN6mpqhyqj6sCq3Wr6axcrNCtRK24ri2u
+	oa8Wr4uwALB1sOqxYLHWskuywrM4s660JbSctRO1irYBtnm28Ldot+C4WbjRuUq5wro7
+	urW7LrunvCG8m70VvY++Cr6Evv+/er/1wHDA7MFnwePCX8Lbw1jD1MRRxM7FS8XIxkbG
+	w8dBx7/IPci8yTrJuco4yrfLNsu2zDXMtc01zbXONs62zzfPuNA50LrRPNG+0j/SwdNE
+	08bUSdTL1U7V0dZV1tjXXNfg2GTY6Nls2fHadtr724DcBdyK3RDdlt4c3qLfKd+v4Dbg
+	veFE4cziU+Lb42Pj6+Rz5PzlhOYN5pbnH+ep6DLovOlG6dDqW+rl63Dr++yG7RHtnO4o
+	7rTvQO/M8Fjw5fFy8f/yjPMZ86f0NPTC9VD13vZt9vv3ivgZ+Kj5OPnH+lf65/t3/Af8
+	mP0p/br+S/7c/23//9IfICEiWiRjbGFzc25hbWVYJGNsYXNzZXNcTlNDb2xvclNwYWNl
+	oiMkXE5TQ29sb3JTcGFjZVhOU09iamVjdNIfICYnV05TQ29sb3KiJiQACAARABoAJAAp
+	ADIANwBJAEwAUQBTAFoAYABrAHgAfgCLAKAApwDSAPwA/gEAAQIBCQEOARQBFgEYARoN
+	Zg1rDXYNfw2MDY8NnA2lDaoNsgAAAAAAAAIBAAAAAAAAACgAAAAAAAAAAAAAAAAAAA21
+	</data>
+	<key>BackgroundAlphaInactive</key>
+	<real>0.73865855823863635</real>
+	<key>BackgroundBlur</key>
+	<real>0.0</real>
+	<key>BackgroundBlurInactive</key>
+	<real>0.50397283380681823</real>
+	<key>BackgroundColor</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxARElVO
+	U1JHQlxOU0NvbG9yU3BhY2VWJGNsYXNzTxAqMC4wNzg3MTk0MjkzNSAwLjA3ODcxOTQy
+	OTM1IDAuMDc4NzE5NDI5MzUAEAGAAtIUFRYXWiRjbGFzc25hbWVYJGNsYXNzZXNXTlND
+	b2xvcqIWGFhOU09iamVjdAgRGiQpMjdJTFFTV11kand+q62vtL/I0NMAAAAAAAABAQAA
+	AAAAAAAZAAAAAAAAAAAAAAAAAAAA3A==
+	</data>
+	<key>BackgroundSettingsForInactiveWindows</key>
+	<false/>
+	<key>CursorColor</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldO
+	U1doaXRlXE5TQ29sb3JTcGFjZVYkY2xhc3NLMC4zMDI0MTkzNgAQA4AC0hQVFhdaJGNs
+	YXNzbmFtZVgkY2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEaJCkyN0lMUVNXXWRs
+	eYCMjpCVoKmxtAAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAAAAC9
+	</data>
+	<key>Font</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNALAAAAAAAABAQgAKAA11TRk1v
+	bm8tTWVkaXVt0hcYGRpaJGNsYXNzbmFtZVgkY2xhc3Nlc1ZOU0ZvbnSiGRtYTlNPYmpl
+	Y3QIERokKTI3SUxRU1heZ253foWOkJKUoqeyu8LFAAAAAAAAAQEAAAAAAAAAHAAAAAAA
+	AAAAAAAAAAAAAM4=
+	</data>
+	<key>FontAntialias</key>
+	<true/>
+	<key>FontWidthSpacing</key>
+	<real>0.99596774193548387</real>
+	<key>Linewrap</key>
+	<true/>
+	<key>ProfileCurrentVersion</key>
+	<real>2.0699999999999998</real>
+	<key>RestoreLines</key>
+	<integer>2000</integer>
+	<key>ScrollbackLines</key>
+	<integer>50000</integer>
+	<key>SelectionColor</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldO
+	U1doaXRlXE5TQ29sb3JTcGFjZVYkY2xhc3NLMC4yNTQwMzIyNQAQA4AC0hQVFhdaJGNs
+	YXNzbmFtZVgkY2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEaJCkyN0lMUVNXXWRs
+	eYCMjpCVoKmxtAAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAAAAC9
+	</data>
+	<key>ShouldLimitScrollback</key>
+	<integer>1</integer>
+	<key>ShowWindowSettingsNameInTitle</key>
+	<false/>
+	<key>TerminalType</key>
+	<string>xterm-color</string>
+	<key>TextBoldColor</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldO
+	U1doaXRlXE5TQ29sb3JTcGFjZVYkY2xhc3NCMQAQA4AC0hQVFhdaJGNsYXNzbmFtZVgk
+	Y2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEaJCkyN0lMUVNXXWRseYCDhYeMl6Co
+	qwAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAAAAC0
+	</data>
+	<key>TextColor</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldO
+	U1doaXRlXE5TQ29sb3JTcGFjZVYkY2xhc3NLMC45NDc1ODA2NAAQA4AC0hQVFhdaJGNs
+	YXNzbmFtZVgkY2xhc3Nlc1dOU0NvbG9yohYYWE5TT2JqZWN0CBEaJCkyN0lMUVNXXWRs
+	eYCMjpCVoKmxtAAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAAAAC9
+	</data>
+	<key>UseBrightBold</key>
+	<true/>
+	<key>columnCount</key>
+	<integer>120</integer>
+	<key>name</key>
+	<string>JJG-Term</string>
+	<key>rowCount</key>
+	<integer>30</integer>
+	<key>shellExitAction</key>
+	<integer>1</integer>
+	<key>type</key>
+	<string>Window Settings</string>
+</dict>
+</plist>
+</file>
+
+<file path="tasks/omzsh.yml">
+- name: Install omzsh
+  ansible.builtin.shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)")
+</file>
+
+<file path="tasks/sublime-text.yml">
+---
+- name: Ensure Sublime Text directories exist.
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ sublime_base_path }}/{{ sublime_config_path }}"
+    - "{{ sublime_base_path }}/Installed Packages"
+
+- name: Ensure Sublime Package Control is installed.
+  get_url:
+    url: "https://packagecontrol.io/Package%20Control.sublime-package"
+    dest: "{{ sublime_base_path }}/Installed Packages/Package Control.sublime-package"
+
+- name: Ensure Sublime Package Control Packages are configured.
+  template:
+    src: templates/Package_Control.sublime-settings.j2
+    dest: "{{ sublime_base_path }}/{{ sublime_config_path }}/Package Control.sublime-settings"
+
+- name: Ensure Sublime text user Preferences and theme are set.
+  copy:
+    src: "files/sublime/{{ item }}"
+    dest: "{{ sublime_base_path }}/{{ sublime_config_path }}/{{ item }}"
+  loop:
+    - "Cobalt (SL).tmTheme"
+    - "Markdown.sublime-settings"
+    - "Plain text.sublime-settings"
+    - "Preferences.sublime-settings"
+    - "WordCount.sublime-settings"
+</file>
+
+<file path="templates/Package_Control.sublime-settings.j2">
+{
+	"auto_upgrade_last_run": null,
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+{% for package in sublime_package_control %}
+  "{{ package }}"{% if not loop.last %},{% endif %}
+{% endfor %}
+],
+}
+</file>
+
+<file path="tests/inventory">
+[local]
+localhost ansible_connection=local
+</file>
+
+<file path="tests/uninstall-homebrew.sh">
+#!/bin/bash
+#
+# Uninstalls Homebrew using the official uninstall script.
+
+# Download and run the uninstall script.
+curl -sLO https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh
+chmod +x ./uninstall.sh
+sudo ./uninstall.sh --force
+
+# Clean up Homebrew directories.
+sudo rm -rf /usr/local/Homebrew
+sudo rm -rf /usr/local/Caskroom
+sudo rm -rf /usr/local/bin/brew
+</file>
+
+<file path=".yamllint">
+---
+extends: default
+
+rules:
+  line-length:
+    max: 180
+    level: warning
+
+ignore: |
+  .github/stale.yml
+</file>
+
+<file path=".github/FUNDING.yml">
+# These are supported funding model platforms
+---
+github: geerlingguy
+patreon: geerlingguy
+</file>
+
+<file path="tasks/sudoers.yml">
+---
+# If the user installs GNU sed through homebrew the path is different.
+- name: Register path to sed.
+  command: which sed
+  register: sed_which_result
+  changed_when: false
+  when: sed_path is undefined
+
+- name: Define sed_path variable.
+  set_fact:
+    sed_path: "{{ sed_which_result.stdout }}"
+  when: sed_path is undefined
+
+# Sudoers configuration.
+- name: Copy sudoers configuration into place.
+  copy:
+    content: "{{ sudoers_custom_config }}"
+    dest: /private/etc/sudoers.d/custom
+    mode: 0440
+    validate: 'visudo -cf %s'
+  become: true
+</file>
+
+<file path="tests/ansible.cfg">
+[defaults]
+inventory = inventory
+</file>
+
+<file path=".ansible-lint">
+---
+skip_list:
+  - experimental
+  - fqcn-builtins
+</file>
+
+<file path="full-mac-setup.md">
+# Full Mac Setup Process (for me)
+
+There are some things in life that just can't be automated... or aren't 100% worth the time :(
+
+This document covers that, at least in terms of setting up a brand new Mac out of the box.
+
+## Initial configuration of a brand new Mac
+
+Before starting, I completed Apple's mandatory macOS setup wizard (creating a local user account, and optionally signing into my iCloud account). Once on the macOS desktop, I do the following (in order):
+
+  - Install Ansible (following the guide in [README.md](README.md))
+  - **Sign in in App Store** (since `mas` can't sign in automatically)
+  - Clone mac-dev-playbook to the Mac: `git clone git@github.com:geerlingguy/mac-dev-playbook.git`
+  - Drop `config.yml` from `~/Dropbox/Apps/Config` to the playbook (copy over the network or using a USB flash drive).
+  - Run the playbook with `--skip-tags post`.
+    - If there are errors, you may need to finish up other tasks like installing 'old-fashioned' apps first (since I try to place Photoshop in the Dock and it can't be installed automatically). Then, run the playbook again ;)
+  - Start Synchronization tasks:
+    - Open Photos and make sure iCloud sync options are correct
+    - Open Music, make sure computer is authorized, and set Library sync options
+    - Open Dropbox, sign in, and set up sync
+  - Install old-fashioned apps:
+    - Install [Creative Cloud](https://creativecloud.adobe.com/apps/download/creative-cloud)
+      - Install Photoshop/Illustrator manually
+    - (If required:)
+      - Install [Elgato Stream Deck](https://www.elgato.com/en/downloads)
+        - Open Livestream profile inside `~/Dropbox/Apps/Config/Stream Deck`
+      - Install [Elgato Key Light Air (Control Center)](https://www.elgato.com/en/downloads)
+      - Install [Autodesk Fusion 360](https://www.autodesk.com)
+      - Install Microsoft Office Home & Student 2019 (https://account.microsoft.com/services/)
+      - Install [Fritzing](https://fritzing.org/download/)
+      - Install Meshmixer (but it looks like it's gone now!)
+  - Configure FastMail account:
+    - Log into Fastmail
+    - Go to settings, go to the setup page for macOS Mail
+    - Download the profile and double click to install
+    - Head to the 'Profiles' System Preference pane and click install
+  - Open Calendar and enable personal  Google CalDAV account (you have to manually sign in).
+  - Manually copy `~/Development` folder from another Mac (to save time).
+  - Manual settings to automate someday:
+    - System Preferences:
+      - Accessibility > Display > Reduce transparency
+      - Keyboard > Modifier Keys... > Caps Lock to Esc
+    - Safari:
+      - View > Show Status Bar
+      - Preferences > Advanced > "Show full website address"
+      - Preferences > Advanced > "Show Develop menu in menu bar"
+    - Dock:
+      - Add jgeerling, Downloads, Applications, and Video Projects folders
+    - Terminal:
+      - Preferences > Profiles > Set JJG-Term as the default theme
+  - _After Dropbox Sync completes_: Run the playbook with `--tags post` to complete setup.
+  - Symlink the synchronized `config.yml` into the playbook dir: `ln -s /Users/jgeerling/Dropbox/Apps/Config/mac-dev-playbook/config.yml /Users/jgeerling/Development/mac-dev-playbook/config.yml`
+  - These things might be automatable, but I do them manually right now:
+    - Configure Time Machine backup drive and [Time Machine Editor](https://tclementdev.com/timemachineeditor/) (if needed)
+    - Install Wireguard from App Store and add configuration (if needed)
+
+## To Wrap in Post-provision automation
+
+The following tasks have to wait for the initial Dropbox sync to complete before they'll succeed. So ideally I'll stick this all in a post-provision script but somehow flag it not to run on first provision.
+
+```
+# ZSH Aliases.
+ln -s /Users/jgeerling/Dropbox/Apps/Config/.aliases /Users/jgeerling/.aliases
+
+# Electrum BTC Wallet.
+ln -s /Users/jgeerling/Dropbox/Apps/Electrum/default_wallet /Users/jgeerling/.electrum/wallets/default_wallet
+
+# SSH setup.
+ssh-keygen  # and create a default key to set up .ssh folder
+sudo ln -s /Users/jgeerling/Dropbox/Apps/Config/ssh/config ~/.ssh/config
+# TODO - Manually copy any shared SSH keys that are needed.
+
+# Ansible setup.
+sudo mkdir -p /etc/ansible
+sudo ln -s /Users/jgeerling/Dropbox/Apps/Config/ansible/ansible.cfg /etc/ansible/ansible.cfg
+sudo ln -s /Users/jgeerling/Dropbox/Apps/Config/ansible/hosts /etc/ansible/hosts
+sudo ln -s /Users/jgeerling/Dropbox/VMs/roles /etc/ansible/roles
+mkdir -p /Users/jgeerling/.ansible
+ln -s /Users/jgeerling/Dropbox/Apps/Config/ansible/galaxy_token /Users/jgeerling/.ansible/galaxy_token
+ln -s /Users/jgeerling/Dropbox/Apps/Config/ansible/mm-vault-password.txt /Users/jgeerling/.ansible/mm-vault-password.txt
+ln -s /Users/jgeerling/Dropbox/VMs/ /Users/jgeerling/.ansible/collections
+
+# Final Cut Pro setup. (Open Motion first)
+cp -r /Users/jgeerling/Dropbox/Apps/Config/Motion/Motion\ Templates.localized/ /Users/jgeerling/Movies/Motion\ Templates.localized/
+cp -r /Users/jgeerling/Dropbox/Apps/Config/Motion/Text\ Styles/ /Users/jgeerling/Library/Application\ Support/Motion/Library/Text\ Styles.localized/
+
+# Sequel Ace favorites. (Open Sequel Ace first)
+cp /Users/jgeerling/Dropbox/Apps/Config/Sequel\ Ace/Favorites.plist /Users/jgeerling/Library/Containers/com.sequel-ace.sequel-ace/Data/Library/Application\ Support/Sequel\ Ace/Data/Favorites.plist
+
+# Font setup.
+cp ~/Dropbox/Apps/Config/Fonts/* ~/Library/Fonts/
+
+# Vim setup.
+mkdir -p ~/.vim/autoload
+mkdir -p ~/.vim/bundle
+cd ~/.vim/autoload
+curl https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim > pathogen.vim
+cd ~/.vim/bundle
+git clone git://github.com/scrooloose/nerdtree.git
+```
+
+## When formatting old Mac
+
+  - Sign out of Adobe Creative Cloud
+  - Sign out of Panic Sync in Transmit
+  - Deauthorize Apple Music in iTunes/Music App
+  - Make sure anything new merged into `~/Dropbox/Apps/Config`:
+    - Fonts from ~/Library/Fonts
+    - Motion Plugins from ~/Movies/Motion
+    - Final Cut Pro Text Styles in ~/Library/Application Support/Motion/Library/Text Styles
+    - Sequel Ace shortcuts from ~/Library/Containers/com.sequel-ace.sequel-ace/Data/Library/Application\ Support/Sequel\ Ace/Data/Favorites.plist
+  - Follow Apple's guide (TODO)
+</file>
+
+<file path="files/sublime/Preferences.sublime-settings">
+{
+  "added_words":
+  [
+    "Kubernetes",
+    "Ansible",
+    "Mesos",
+    "de",
+    "K8s",
+    "stateful",
+    "filesystem",
+    "cron",
+    "kubeadm",
+    "kops",
+    "Terraform",
+    "geerlingguy",
+    "kubernetes",
+    "playbooks",
+    "Vagrantfile",
+    "lang",
+    "config",
+    "debian9",
+    "vm",
+    "virtualbox",
+    "cpus",
+    "ip",
+    "hostname",
+    "k8s",
+    "ansible",
+    "playbook",
+    "yml",
+    "terabyte",
+    "plugin",
+    "kube",
+    "pre",
+    "kubelet",
+    "playbook's",
+    "dev",
+    "debian",
+    "ce",
+    "amd64",
+    "src",
+    "cidr",
+    "kubectl",
+    "sudo",
+    "su",
+    "v1",
+    "etcd",
+    "Ansible's",
+    "openshift",
+    "nginx",
+    "metadata",
+    "apps",
+    "app",
+    "namespace",
+    "a4d",
+    "yaml",
+    "linenos",
+    "3m",
+    "inline",
+    "http",
+    "api",
+    "ok",
+    "init",
+    "rbac",
+    "gz",
+    "linux",
+    "v2",
+    "https",
+    "unarchive",
+    "usr",
+    "dest",
+    "tmp",
+    "cp",
+    "stdout",
+    "admin",
+    "io",
+    "dns",
+    "phpmyadmin",
+    "wordpress",
+    "jenkins",
+    "drupal",
+    "Ceph",
+    "Gluster",
+    "Dramble",
+    "Plugins",
+    "Jinja",
+    "templating",
+    "Dockerfiles",
+    "Dockerfile",
+    "Geerling",
+    "busybox",
+    "rmi",
+    "ps",
+    "localhost",
+    "python2",
+    "ubuntu1604",
+    "angstwad",
+    "Ubuntu",
+    "Angstwad's",
+    "www",
+    "mysql",
+    "env",
+    "py",
+    "mkdir",
+    "Werkzeug",
+    "sqlalchemy",
+    "html",
+    "Jinja2",
+    "libmysqlclient",
+    "j2",
+    "ubuntu16",
+    "awk",
+    "sbin",
+    "everything's",
+    "cd",
+    "plugins",
+    "winrm",
+    "saltstack",
+    "Hubot",
+    "hubot",
+    "args",
+    "js",
+    "npm",
+    "chdir",
+    "lineinfile",
+    "json",
+    "regexp",
+    "redis",
+    "heroku",
+    "a4dbot",
+    "Slack's",
+    "bot's",
+    "lifecycle",
+    "microservices",
+    "wildcard",
+    "Encrypt's",
+    "crypto",
+    "ssl",
+    "privkey",
+    "pem",
+    "csr",
+    "fullchain",
+    "selfsigned",
+    "pyopenssl",
+    "libssl",
+    "distros",
+    "iptables",
+    "cfg",
+    "tcp",
+    "python3",
+    "distro",
+    "vhosts",
+    "docroot",
+    "dir",
+    "refactor",
+    "idempotently",
+    "conf",
+    "Keychain",
+    "webservers",
+    "xyz",
+    "dbservers",
+    "httpd",
+    "rgb",
+    "dict",
+    "jinja",
+    "blog",
+    "Mazer's",
+    "Cisco",
+    "mv",
+    "endif",
+    "plugin's",
+    "versioning",
+    "namespaced",
+    "md",
+    "ruleset",
+    "ntp",
+    "parseable",
+    "foo",
+    "apache2",
+    "Diff",
+    "diffing",
+    "drush",
+    "php",
+    "url",
+    "multiline",
+    "nocows",
+    "java",
+    "workflows",
+    "devops",
+    "username",
+    "online",
+    "github",
+    "awx",
+    "cowsay",
+    "workflow",
+    "Rackspace",
+    "Uninstalling",
+    "uninstall",
+    "walkthrough",
+    "webhooks",
+    "Grafana",
+    "Rundeck",
+    "Drupal's",
+    "Symfony",
+    "Laravel",
+    "Joomla",
+    "idempotence",
+    "Drush's",
+    "Solr",
+    "solr",
+    "sha512",
+    "Solr's",
+    "openjdk",
+    "jdk",
+    "Ubuntu's",
+    "org",
+    "lucene",
+    "tgz",
+    "wget",
+    "txt",
+    "Andretti",
+    "devel",
+    "chkconfig",
+    "dicts",
+    "atl",
+    "subdomains",
+    "janedoe",
+    "vvvv",
+    "Vagrantfiles",
+    "admins",
+    "Remi",
+    "repo",
+    "epel",
+    "remi",
+    "rpms",
+    "remirepo",
+    "pki",
+    "gpg",
+    "enablerepo",
+    "nogpgcheck",
+    "firewalld",
+    "Remi's",
+    "disablerepo",
+    "req",
+    "scp",
+    "rsync",
+    "stderr",
+    "Forever's",
+    "nohup",
+    "app's",
+    "nodejs",
+    "pycurl",
+    "acl",
+    "ondrej",
+    "ppa",
+    "sendmail",
+    "php7",
+    "cli",
+    "gd",
+    "opcache",
+    "xml",
+    "mbstring",
+    "pdo",
+    "apcu",
+    "libpcre3",
+    "libapache2",
+    "mysqldb",
+    "ufw",
+    "a2enmod",
+    "virtualhost",
+    "a2ensite",
+    "a2dissite",
+    "symlinking",
+    "webmaster",
+    "ini",
+    "codebase",
+    "priv",
+    "cnf",
+    "phar"
+  ],
+  "auto_complete_commit_on_tab": true,
+  "auto_complete_delay": 200,
+  "auto_indent": true,
+  "auto_match_enabled": true,
+  "binary_file_patterns":
+  [
+    "generated/*",
+    "*.tbz2",
+    "*.gzip",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.ttf",
+    "*.tga",
+    "*.dds",
+    "*.ico",
+    "*.eot",
+    "*.pdf",
+    "*.swf",
+    "*.jar",
+    "*.zip"
+  ],
+  "close_windows_when_empty": true,
+  "color_scheme": "Packages/User/Cobalt (SL).tmTheme",
+  "create_window_at_startup": false,
+  "detect_indentation": true,
+  "draw_minimap_border": false,
+  "draw_white_space": "selection",
+  "ensure_newline_at_eof_on_save": false,
+  "fade_fold_buttons": true,
+  "file_exclude_patterns":
+  [
+    "*.pyc",
+    "*.pyo",
+    "*.exe",
+    "*.dll",
+    "*.obj",
+    "*.o",
+    "*.a",
+    "*.lib",
+    "*.so",
+    "*.dylib",
+    "*.ncb",
+    "*.sdf",
+    "*.suo",
+    "*.pdb",
+    "*.idb",
+    ".DS_Store",
+    "*.class",
+    "*.psd",
+    "*.db",
+    "*.sublime-workspace"
+  ],
+  "fold_buttons": true,
+  "folder_exclude_patterns":
+  [
+    "node_modules",
+    ".svn",
+    ".git",
+    ".hg",
+    "CVS",
+    "vendor",
+    ".bundle",
+    ".vagrant"
+  ],
+  "font_size": 15.0,
+  "gpu_window_buffer": false,
+  "gutter": true,
+  "highlight_line": true,
+  "ignored_packages":
+  [
+    "Vintage",
+  ],
+  "ignored_words":
+  [
+    "0000ff",
+    "00f",
+    "12m",
+    "13m",
+    "5d",
+    "5m",
+    "6d",
+    "Phergie",
+    "Sutcliffe's",
+    "Uvh",
+    "ansicolor",
+    "awxcompose",
+    "configfile",
+    "examplenodeapp",
+    "getcomposer",
+    "googleapis",
+    "johndoe",
+    "johndoe1234",
+    "modifyvm",
+    "modulename",
+    "msg",
+    "node1",
+    "node2",
+    "oo",
+    "phergie",
+    "rf",
+    "rolename",
+    "si",
+    "v1beta1",
+    "var1",
+    "var2",
+    "varname",
+    "vg"
+  ],
+  "line_numbers": true,
+  "margin": 4,
+  "match_brackets": true,
+  "match_selection": true,
+  "rulers":
+  [
+    80
+  ],
+  "smart_indent": true,
+  "spell_check": false,
+  "tab_size": 2,
+  "theme": "auto",
+  "translate_tabs_to_spaces": true,
+  "trim_automatic_white_space": false,
+  "trim_trailing_white_space_on_save": false,
+}
+</file>
+
+<file path="inventory">
+[all]
+127.0.0.1  ansible_connection=local
+</file>
+
+<file path="requirements.yml">
+---
+roles:
+  - name: elliotweiser.osx-command-line-tools
+  - name: geerlingguy.dotfiles
+
+collections:
+  - name: geerlingguy.mac
+</file>
+
+<file path=".github/workflows/ci.yml">
+---
+name: CI
+'on':
+  pull_request:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "0 5 * * 4"
+
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: pip3 install yamllint ansible ansible-lint
+
+      - name: Lint code.
+        run: |
+          yamllint .
+          ansible-lint
+
+  integration:
+    name: Integration
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - macos-12
+          - macos-11
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Uninstall GitHub Actions' built-in Homebrew.
+        run: tests/uninstall-homebrew.sh
+
+      - name: Uninstall GitHub Actions' built-in browser installs.
+        run: |
+          sudo rm -rf /Applications/Firefox.app
+          sudo rm -rf /Applications/Google\ Chrome.app
+
+      - name: Install test dependencies.
+        run: |
+          sudo pip3 install --upgrade pip
+          sudo pip3 install ansible
+
+      - name: Set up the test environment.
+        run: |
+          cp tests/ansible.cfg ./ansible.cfg
+          cp tests/inventory ./inventory
+          cp tests/config.yml ./config.yml
+          ansible-galaxy install -r requirements.yml
+
+      - name: Test the playbook's syntax.
+        run: ansible-playbook main.yml --syntax-check
+
+      - name: Test the playbook.
+        run: ansible-playbook main.yml
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+
+      - name: Idempotence check.
+        run: |
+          idempotence=$(mktemp)
+          ansible-playbook main.yml | tee -a ${idempotence}
+          tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+</file>
+
+<file path="tasks/osx.yml">
+---
+# TODO: Use sudo once .osx can be run via root with no user interaction.
+- name: Run .osx dotfiles.
+  command: "{{ osx_script }}"
+  changed_when: false
+</file>
+
+<file path="tasks/terminal.yml">
+---
+# Custom Terminal theme.
+- name: Get current Terminal profile.
+  command: defaults read com.apple.terminal 'Default Window Settings'
+  register: terminal_theme
+  changed_when: false
+  check_mode: false
+
+- name: Ensure custom Terminal profile is added.
+  copy:
+    src: files/terminal/JJG-Term.terminal
+    dest: /tmp/JJG-Term.terminal
+  changed_when: false
+  when: "'JJG-Term' not in terminal_theme.stdout"
+
+- name: Ensure custom Terminal profile is added.
+  command: open /tmp/JJG-Term.terminal
+  changed_when: false
+  when: "'JJG-Term' not in terminal_theme.stdout"
+
+# TODO: This doesn't work in Yosemite. Consider a different solution?
+- name: Ensure custom Terminal profile is set as default.
+  command: "{{ item }}"
+  with_items:
+    - defaults write com.apple.terminal 'Default Window Settings' -string JJG-Term
+    - defaults write com.apple.terminal 'Startup Window Settings' -string JJG-Term
+  changed_when: false
+  when: "'JJG-Term' not in terminal_theme.stdout"
+</file>
+
+<file path="ansible.cfg">
+[defaults]
+nocows = True
+roles_path = ./roles:/etc/ansible/roles
+inventory = inventory
+become = true
+stdout_callback = yaml
+</file>
+
+<file path="tasks/extra-packages.yml">
+---
+- name: Install global Composer packages.
+  composer:
+    command: "{{ (item.state | default('present') == 'absent') | ternary('remove', 'require') }}"
+    arguments: "{{ item.name | default(item) }} {{ item.version | default('@stable') }}"
+    # Ansible 2.4 supports `global_command` making `working_dir` optional.
+    working_dir: "{{ lookup('env', 'COMPOSER_HOME') | default('~/.composer', true) }}"
+  loop: "{{ composer_packages }}"
+
+- name: Install global NPM packages.
+  npm:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+    version: "{{ item.version | default(omit) }}"
+    global: true
+    executable: "{{ item.executable | default(omit) }}"
+  loop: "{{ npm_packages }}"
+
+- name: Install global Pip packages.
+  pip:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+    version: "{{ item.version | default(omit) }}"
+    executable: "{{ item.executable | default('pip3') }}"
+  loop: "{{ pip_packages }}"
+
+- name: Install global Ruby gems.
+  gem:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+    version: "{{ item.version | default(omit) }}"
+    user_install: false
+    executable: "{{ item.executable | default(omit) }}"
+  loop: "{{ gem_packages }}"
+</file>
+
+<file path="main.yml">
+---
+- hosts: all
+
+  vars_files:
+    - default.config.yml
+
+  pre_tasks:
+    - name: Include playbook configuration.
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ['always']
+
+  roles:
+    - role: elliotweiser.osx-command-line-tools
+    - role: geerlingguy.mac.homebrew
+      tags: ['homebrew']
+    - role: geerlingguy.dotfiles
+      when: configure_dotfiles
+      tags: ['dotfiles']
+    - role: geerlingguy.mac.mas
+      when: mas_installed_apps or mas_installed_app_ids
+      tags: ['mas']
+    - role: geerlingguy.mac.dock
+      when: configure_dock
+      tags: ['dock']
+
+  tasks:
+    - import_tasks: tasks/sudoers.yml
+      when: configure_sudoers
+      tags: ['sudoers']
+
+    - import_tasks: tasks/terminal.yml
+      when: configure_terminal
+      tags: ['terminal']
+
+    - import_tasks: tasks/osx.yml
+      when: configure_osx
+      tags: ['osx']
+
+    - import_tasks: tasks/extra-packages.yml
+      tags: ['extra-packages']
+
+    - block:
+        - name: Run configured post-provision ansible task files.
+          include_tasks: "{{ outer_item }}"
+          loop_control:
+            loop_var: outer_item
+          with_fileglob: "{{ post_provision_tasks|default(omit) }}"
+      tags: ['post']
+</file>
+
+<file path="README.md">
+<img src="https://raw.githubusercontent.com/geerlingguy/mac-dev-playbook/master/files/Mac-Dev-Playbook-Logo.png" width="250" height="156" alt="Mac Dev Playbook Logo" />
+
+# Mac Development Ansible Playbook
+
+[![CI][badge-gh-actions]][link-gh-actions]
+
+This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have a few manual installation steps, but at least it's all documented here.
+
+## Installation
+
+  1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
+  2. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html):
+
+     1. Run the following command to add Python 3 to your $PATH: `export PATH="$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:$PATH"`
+     2. Upgrade Pip: `sudo pip3 install --upgrade pip`
+     3. Install Ansible: `pip3 install ansible`
+
+  3. Clone or download this repository to your local drive.
+  4. Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
+  5. Run `ansible-playbook main.yml --ask-become-pass` inside this directory to actually run the playbook (i.e. DON'T DO THIS UNTIL YOU'VE CUSTOMIZED IT TO YOUR LIKING). Enter your macOS account password when prompted for the 'BECOME' password.
+
+> Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
+
+### Use with a remote Mac
+
+You can use this playbook to manage other Macs as well; the playbook doesn't even need to be run from a Mac at all! If you want to manage a remote Mac, either another Mac on your network, or a hosted Mac like the ones from [MacStadium](https://www.macstadium.com), you just need to make sure you can connect to it with SSH:
+
+  1. (On the Mac you want to connect to:) Go to System Preferences > Sharing.
+  2. Enable 'Remote Login'.
+
+> You can also enable remote login on the command line:
+>
+>     sudo systemsetup -setremotelogin on
+
+Then edit the `inventory` file in this repository and change the line that starts with `127.0.0.1` to:
+
+```
+[ip address or hostname of mac]  ansible_user=[mac ssh username]
+```
+
+If you need to supply an SSH password (if you don't use SSH keys), make sure to pass the `--ask-pass` parameter to the `ansible-playbook` command.
+
+### Running a specific set of tagged tasks
+
+You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `dotfiles`, `homebrew`, `mas`, `extra-packages` and `osx`.
+
+    ansible-playbook main.yml -K --tags "dotfiles,homebrew"
+
+## Overriding Defaults
+
+Not everyone's development environment and preferred software configuration is the same.
+
+You can override any of the defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed packages and apps with something like:
+
+```yaml
+homebrew_installed_packages:
+  - cowsay
+  - git
+  - go
+
+mas_installed_apps:
+  - { id: 443987910, name: "1Password" }
+  - { id: 498486288, name: "Quick Resizer" }
+  - { id: 557168941, name: "Tweetbot" }
+  - { id: 497799835, name: "Xcode" }
+
+composer_packages:
+  - name: hirak/prestissimo
+  - name: drush/drush
+    version: '^8.1'
+
+gem_packages:
+  - name: bundler
+    state: latest
+
+npm_packages:
+  - name: webpack
+
+pip_packages:
+  - name: mkdocs
+
+configure_dock: true
+dockitems_remove:
+  - Launchpad
+  - TV
+dockitems_persist:
+  - name: "Sublime Text"
+    path: "/Applications/Sublime Text.app/"
+    pos: 5
+```
+
+Any variable can be overridden in `config.yml`; see the supporting roles' documentation for a complete list of available variables.
+
+## Included Applications / Configuration (Default)
+
+Applications (installed with Homebrew Cask):
+
+  - [ChromeDriver](https://sites.google.com/chromium.org/driver/)
+  - [Docker](https://www.docker.com/)
+  - [Dropbox](https://www.dropbox.com/)
+  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+  - [Google Chrome](https://www.google.com/chrome/)
+  - [Handbrake](https://handbrake.fr/)
+  - [Homebrew](http://brew.sh/)
+  - [LICEcap](http://www.cockos.com/licecap/)
+  - [nvALT](http://brettterpstra.com/projects/nvalt/)
+  - [Sequel Ace](https://sequel-ace.com) (MySQL client)
+  - [Slack](https://slack.com/)
+  - [Sublime Text](https://www.sublimetext.com/)
+  - [Transmit](https://panic.com/transmit/) (S/FTP client)
+
+Packages (installed with Homebrew):
+
+  - autoconf
+  - bash-completion
+  - doxygen
+  - gettext
+  - gifsicle
+  - git
+  - github/gh/gh
+  - go
+  - gpg
+  - httpie
+  - iperf
+  - libevent
+  - sqlite
+  - mcrypt
+  - nmap
+  - node
+  - nvm
+  - php
+  - ssh-copy-id
+  - cowsay
+  - readline
+  - openssl
+  - pv
+  - wget
+  - wrk
+  - zsh-history-substring-search
+
+My [dotfiles](https://github.com/geerlingguy/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
+
+Finally, there are a few other preferences and settings added on for various apps and services.
+
+## Full / From-scratch setup guide
+
+Since I've used this playbook to set up something like 20 different Macs, I decided to write up a full 100% from-scratch install for my own reference (everyone's particular install will be slightly different).
+
+You can see my full from-scratch setup document here: [full-mac-setup.md](full-mac-setup.md).
+
+## Testing the Playbook
+
+Many people have asked me if I often wipe my entire workstation and start from scratch just to test changes to the playbook. Nope! This project is [continuously tested on GitHub Actions' macOS infrastructure](https://github.com/geerlingguy/mac-dev-playbook/actions?query=workflow%3ACI).
+
+You can also run macOS itself inside a VM, for at least some of the required testing (App Store apps and some proprietary software might not install properly). I currently recommend:
+
+  - [UTM](https://mac.getutm.app)
+  - [Tart](https://github.com/cirruslabs/tart)
+
+## Ansible for DevOps
+
+Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches you how to automate almost anything with Ansible.
+
+## Author
+
+This project was created by [Jeff Geerling](https://www.jeffgeerling.com/) (originally inspired by [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks)).
+
+[badge-gh-actions]: https://github.com/geerlingguy/mac-dev-playbook/workflows/CI/badge.svg?event=push
+[link-gh-actions]: https://github.com/geerlingguy/mac-dev-playbook/actions?query=workflow%3ACI
+</file>
+
+<file path="default.config.yml">
+---
+downloads: ~/.ansible-downloads/
+
+configure_dotfiles: false
+configure_terminal: false
+configure_osx: false
+
+# Set to 'true' to configure the Dock via dockutil.
+configure_dock: false
+dockitems_remove: []
+# - Launchpad
+# - TV
+# - Podcasts
+# - 'App Store'
+dockitems_persist: []
+# - name: "Sublime Text"
+#   path: "/Applications/Sublime Text.app/"
+#   pos: 5
+
+configure_sudoers: false
+sudoers_custom_config: ''
+# Example:
+# sudoers_custom_config: |
+#   # Allow users in admin group to use sudo with no password.
+#   %admin ALL=(ALL) NOPASSWD: ALL
+
+homebrew_installed_packages:
+  # - ansible # Installed via Pip.
+  - zsh
+  - zsh-vi-mode
+  - pyenv
+  - chruby
+  - neovim
+  - tmux
+  - ripgrep
+  - bat
+  - tree
+  - eza
+  - node
+  - nvm
+  - kubernetes-cli
+  - fd
+  - zoxide
+  - git
+  - gh 
+  - httpie
+  - karabiner-elements
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - warp
+  - font-fira-code
+  - notion-calendar
+  - spotify
+  - arc
+  - slack
+  - obsidian
+  - chatgpt
+  - docker
+  - keeper-password-manager
+  - 1password
+  - notion
+
+# See `geerlingguy.mas` role documentation for usage instructions.
+mas_installed_apps: []
+mas_email: ""
+mas_password: ""
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
+npm_packages: ["corepack"]
+# - name: webpack
+#   state: present # present/absent/latest, default: present
+#   version: "^2.6" # default: N/A
+pip_packages: []
+# - name: mkdocs
+#   state: present # present/absent/latest, default: present
+#   version: "0.16.3" # default: N/A
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: [omzsh.yml]
+</file>
+
+</files>

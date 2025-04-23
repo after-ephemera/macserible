@@ -4,6 +4,7 @@ downloads: ~/.ansible-downloads/
 configure_dotfiles: false
 configure_terminal: false
 configure_osx: false
+configure_karabiner: true
 
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: false
@@ -35,7 +36,7 @@ homebrew_installed_packages:
   - ripgrep
   - bat
   - tree
-  - exa
+  - eza
   - node
   - nvm
   - kubernetes-cli
@@ -45,23 +46,21 @@ homebrew_installed_packages:
   - gh 
   - httpie
 
-homebrew_taps:
-  - homebrew/core
-  - homebrew/cask
-  - homebrew/cask-fonts
-
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - kitty
+  - warp
   - font-fira-code
-  - cron
+  - notion-calendar
   - spotify
   - arc
   - slack
+  - obsidian
+  - chatgpt
   - docker
   - keeper-password-manager
   - 1password
   - notion
+  - karabiner-elements
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []
@@ -71,7 +70,7 @@ mas_password: ""
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
 # installed, eg. through homebrew.
-npm_packages: []
+npm_packages: ["corepack"]
 # - name: webpack
 #   state: present # present/absent/latest, default: present
 #   version: "^2.6" # default: N/A
@@ -82,3 +81,4 @@ pip_packages: []
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: [omzsh.yml]
+
