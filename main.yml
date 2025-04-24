@@ -45,6 +45,12 @@
       when: configure_karabiner
       tags: ['karabiner']
 
+    - import_tasks: tasks/omzsh.yml
+      tags: ['omzsh']
+
+    - import_tasks: tasks/deno.yml
+      tags: ['deno']
+
     - block:
         - name: Run configured post-provision ansible task files.
           include_tasks: "{{ outer_item }}"
