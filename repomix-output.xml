@@ -1055,24 +1055,6 @@ patreon: geerlingguy
   tags: [google-cloud-sdk]
 </file>
 
-<file path="tasks/trackpad.yml">
----
-- name: Configure trackpad settings
-  command: "{{ item }}"
-  with_items:
-    # Enable tap to click
-    - defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-    - /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    
-    # Set tracking speed (0-3, where 3 is fastest)
-    - defaults write -g com.apple.trackpad.scaling -float 1
-    
-    # Set click pressure (0-1, where 1 is lightest)
-    - defaults write -g com.apple.trackpad.forceClick -float 0.5
-  changed_when: false
-  tags: ['trackpad']
-</file>
-
 <file path="tests/inventory">
 [local]
 localhost ansible_connection=local
@@ -1120,6 +1102,24 @@ ignore: |
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: not ansible_check_mode and not oh_my_zsh_dir.stat.exists
   tags: [omzsh]
+</file>
+
+<file path="tasks/trackpad.yml">
+---
+- name: Configure trackpad settings
+  command: "{{ item }}"
+  with_items:
+    # Enable tap to click
+    - defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+    - /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    
+    # Set tracking speed (0-3, where 3 is fastest)
+    - defaults write -g com.apple.trackpad.scaling -float 1
+    
+    # Set click pressure (0-1, where 1 is lightest)
+    - defaults write -g com.apple.trackpad.forceClick -float 0.5
+  changed_when: false
+  tags: ['trackpad']
 </file>
 
 <file path="tests/ansible.cfg">
@@ -2161,7 +2161,7 @@ This playbook installs and configures most of the software I use on my Mac for w
   1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
   2. [Install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html):
 
-     1. Run the following command to add Python 3 to your $PATH: `export PATH="$HOME/Library/Python/3.8/bin:/opt/homebrew/bin:$PATH"`
+     1. Run the following command to add Python 3 to your $PATH: `export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"`
      2. Upgrade Pip: `sudo pip3 install --upgrade pip`
      3. Install Ansible: `pip3 install ansible`
 
