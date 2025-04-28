@@ -54,6 +54,9 @@
     - import_tasks: tasks/google-cloud-sdk.yml
       tags: ['google-cloud-sdk']
 
+    - import_tasks: tasks/trackpad.yml
+      tags: ['trackpad']
+
     - block:
         - name: Run configured post-provision ansible task files.
           include_tasks: "{{ outer_item }}"
