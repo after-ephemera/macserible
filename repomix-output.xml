@@ -2147,6 +2147,75 @@ stdout_callback = yaml
   loop: "{{ pip_packages }}"
 </file>
 
+<file path="main.yml">
+---
+- hosts: all
+
+  vars_files:
+    - default.config.yml
+
+  pre_tasks:
+    - name: Include playbook configuration.
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ['always']
+
+  roles:
+    - role: elliotweiser.osx-command-line-tools
+    - role: geerlingguy.mac.homebrew
+      tags: ['homebrew']
+    - role: geerlingguy.dotfiles
+      when: configure_dotfiles
+      tags: ['dotfiles']
+    - role: geerlingguy.mac.mas
+      when: mas_installed_apps or mas_installed_app_ids
+      tags: ['mas']
+    - role: geerlingguy.mac.dock
+      when: configure_dock
+      tags: ['dock']
+
+  tasks:
+    - import_tasks: tasks/sudoers.yml
+      when: configure_sudoers
+      tags: ['sudoers']
+
+    - import_tasks: tasks/terminal.yml
+      when: configure_terminal
+      tags: ['terminal']
+
+    - import_tasks: tasks/osx.yml
+      when: configure_osx
+      tags: ['osx']
+
+    - import_tasks: tasks/extra-packages.yml
+      tags: ['extra-packages']
+
+    - import_tasks: tasks/karabiner.yml
+      when: configure_karabiner
+      tags: ['karabiner']
+
+    - import_tasks: tasks/omzsh.yml
+      tags: ['omzsh']
+
+    - import_tasks: tasks/deno.yml
+      tags: ['deno']
+
+    - import_tasks: tasks/google-cloud-sdk.yml
+      tags: ['google-cloud-sdk']
+
+    - import_tasks: tasks/trackpad.yml
+      tags: ['trackpad']
+
+    - block:
+        - name: Run configured post-provision ansible task files.
+          include_tasks: "{{ outer_item }}"
+          loop_control:
+            loop_var: outer_item
+          with_fileglob: "{{ post_provision_tasks|default(omit) }}"
+      tags: ['post']
+</file>
+
 <file path="README.md">
 <img src="https://raw.githubusercontent.com/geerlingguy/mac-dev-playbook/master/files/Mac-Dev-Playbook-Logo.png" width="250" height="156" alt="Mac Dev Playbook Logo" />
 
@@ -2243,51 +2312,9 @@ Any variable can be overridden in `config.yml`; see the supporting roles' docume
 
 ## Included Applications / Configuration (Default)
 
-Applications (installed with Homebrew Cask):
+See the homebrew list in [default.config.yml](default.config.yml)
 
-  - [ChromeDriver](https://sites.google.com/chromium.org/driver/)
-  - [Docker](https://www.docker.com/)
-  - [Dropbox](https://www.dropbox.com/)
-  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-  - [Google Chrome](https://www.google.com/chrome/)
-  - [Handbrake](https://handbrake.fr/)
-  - [Homebrew](http://brew.sh/)
-  - [LICEcap](http://www.cockos.com/licecap/)
-  - [nvALT](http://brettterpstra.com/projects/nvalt/)
-  - [Sequel Ace](https://sequel-ace.com) (MySQL client)
-  - [Slack](https://slack.com/)
-  - [Sublime Text](https://www.sublimetext.com/)
-  - [Transmit](https://panic.com/transmit/) (S/FTP client)
-
-Packages (installed with Homebrew):
-
-  - autoconf
-  - bash-completion
-  - doxygen
-  - gettext
-  - gifsicle
-  - git
-  - github/gh/gh
-  - go
-  - gpg
-  - httpie
-  - iperf
-  - libevent
-  - sqlite
-  - mcrypt
-  - nmap
-  - node
-  - nvm
-  - php
-  - ssh-copy-id
-  - cowsay
-  - readline
-  - openssl
-  - pv
-  - wget
-  - wrk
-  - zsh-history-substring-search
-
+TODO: remove this
 My [dotfiles](https://github.com/geerlingguy/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
 
 Finally, there are a few other preferences and settings added on for various apps and services.
@@ -2310,82 +2337,6 @@ You can also run macOS itself inside a VM, for at least some of the required tes
 ## Ansible for DevOps
 
 Check out [Ansible for DevOps](https://www.ansiblefordevops.com/), which teaches you how to automate almost anything with Ansible.
-
-## Author
-
-This project was created by [Jeff Geerling](https://www.jeffgeerling.com/) (originally inspired by [MWGriffin/ansible-playbooks](https://github.com/MWGriffin/ansible-playbooks)).
-
-[badge-gh-actions]: https://github.com/geerlingguy/mac-dev-playbook/workflows/CI/badge.svg?event=push
-[link-gh-actions]: https://github.com/geerlingguy/mac-dev-playbook/actions?query=workflow%3ACI
-</file>
-
-<file path="main.yml">
----
-- hosts: all
-
-  vars_files:
-    - default.config.yml
-
-  pre_tasks:
-    - name: Include playbook configuration.
-      include_vars: "{{ item }}"
-      with_fileglob:
-        - "{{ playbook_dir }}/config.yml"
-      tags: ['always']
-
-  roles:
-    - role: elliotweiser.osx-command-line-tools
-    - role: geerlingguy.mac.homebrew
-      tags: ['homebrew']
-    - role: geerlingguy.dotfiles
-      when: configure_dotfiles
-      tags: ['dotfiles']
-    - role: geerlingguy.mac.mas
-      when: mas_installed_apps or mas_installed_app_ids
-      tags: ['mas']
-    - role: geerlingguy.mac.dock
-      when: configure_dock
-      tags: ['dock']
-
-  tasks:
-    - import_tasks: tasks/sudoers.yml
-      when: configure_sudoers
-      tags: ['sudoers']
-
-    - import_tasks: tasks/terminal.yml
-      when: configure_terminal
-      tags: ['terminal']
-
-    - import_tasks: tasks/osx.yml
-      when: configure_osx
-      tags: ['osx']
-
-    - import_tasks: tasks/extra-packages.yml
-      tags: ['extra-packages']
-
-    - import_tasks: tasks/karabiner.yml
-      when: configure_karabiner
-      tags: ['karabiner']
-
-    - import_tasks: tasks/omzsh.yml
-      tags: ['omzsh']
-
-    - import_tasks: tasks/deno.yml
-      tags: ['deno']
-
-    - import_tasks: tasks/google-cloud-sdk.yml
-      tags: ['google-cloud-sdk']
-
-    - import_tasks: tasks/trackpad.yml
-      tags: ['trackpad']
-
-    - block:
-        - name: Run configured post-provision ansible task files.
-          include_tasks: "{{ outer_item }}"
-          loop_control:
-            loop_var: outer_item
-          with_fileglob: "{{ post_provision_tasks|default(omit) }}"
-      tags: ['post']
 </file>
 
 <file path="default.config.yml">
