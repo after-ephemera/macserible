@@ -95,6 +95,7 @@ Any variable can be overridden in `config.yml`; see the supporting roles' docume
 
 See the homebrew list in [default.config.yml](default.config.yml)
 
+TODO: remove this
 My [dotfiles](https://github.com/geerlingguy/dotfiles) are also installed into the current user's home directory, including the `.osx` dotfile for configuring many aspects of macOS for better performance and ease of use. You can disable dotfiles management by setting `configure_dotfiles: no` in your configuration.
 
 Finally, there are a few other preferences and settings added on for various apps and services.
