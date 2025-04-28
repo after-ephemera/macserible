@@ -30,6 +30,9 @@
           },
           "complex_modifications": [
             {
+              "parameters": {
+                "simultaneous_threshold_milliseconds": 130
+              },
               "title": "Vi Mode (rev 5)",
               "rules": [
                 {
