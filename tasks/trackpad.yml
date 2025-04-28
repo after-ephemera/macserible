@@ -7,7 +7,7 @@
     - /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     
     # Set tracking speed (0-3, where 3 is fastest)
-    - defaults write -g com.apple.trackpad.scaling -float 1.5
+    - defaults write -g com.apple.trackpad.scaling -float 1
     
     # Set click pressure (0-1, where 1 is lightest)
     - defaults write -g com.apple.trackpad.forceClick -float 0.5

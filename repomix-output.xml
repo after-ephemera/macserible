@@ -14,6 +14,7 @@ The content is organized as follows:
 1. This summary section
 2. Repository information
 3. Directory structure
+4. Repository files (if enabled)
 4. Repository files, each consisting of:
   - File path as an attribute
   - Full contents of the file
@@ -58,14 +59,14 @@ files/
   terminal/
     JJG-Term.terminal
 tasks/
+  deno.yml
   extra-packages.yml
+  google-cloud-sdk.yml
+  karabiner.yml
   omzsh.yml
   osx.yml
-  sublime-text.yml
-  sudoers.yml
   terminal.yml
-templates/
-  Package_Control.sublime-settings.j2
+  trackpad.yml
 tests/
   ansible.cfg
   inventory
@@ -85,25 +86,6 @@ requirements.yml
 
 <files>
 This section contains the contents of the repository's files.
-
-<file path=".gitignore">
-*.vagrant
-.DS_Store
-*.retry
-roles*
-config.yml
-</file>
-
-<file path="LICENSE">
-Copyright (c) 2013 Michael Griffin
-http://mwgriffin.com
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-</file>
 
 <file path=".github/stale.yml">
 # Configuration for probot-stale - https://github.com/probot/stale
@@ -162,6 +144,32 @@ issues:
 
   closeComment: >-
     This issue has been closed due to inactivity. If you feel this is in error, please reopen the issue or file a new issue with the relevant details.
+</file>
+
+<file path=".gitignore">
+*.vagrant
+.DS_Store
+*.retry
+roles*
+config.yml
+</file>
+
+<file path="LICENSE">
+Copyright (c) 2013 Michael Griffin
+http://mwgriffin.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</file>
+
+<file path=".github/FUNDING.yml">
+# These are supported funding model platforms
+---
+github: geerlingguy
+patreon: geerlingguy
 </file>
 
 <file path="files/sublime/Cobalt (SL).tmTheme">
@@ -1025,58 +1033,44 @@ issues:
 </plist>
 </file>
 
-<file path="tasks/omzsh.yml">
-- name: Install omzsh
-  ansible.builtin.shell: |
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)")
-</file>
-
-<file path="tasks/sublime-text.yml">
+<file path="tasks/deno.yml">
 ---
-- name: Ensure Sublime Text directories exist.
-  file:
-    path: "{{ item }}"
-    state: directory
-  loop:
-    - "{{ sublime_base_path }}/{{ sublime_config_path }}"
-    - "{{ sublime_base_path }}/Installed Packages"
+- name: Check if deno exists
+  command: "{{ ansible_env.HOME }}/.deno/bin/deno --version"
+  register: deno_check
+  ignore_errors: true
+  tags: [deno]
 
-- name: Ensure Sublime Package Control is installed.
-  get_url:
-    url: "https://packagecontrol.io/Package%20Control.sublime-package"
-    dest: "{{ sublime_base_path }}/Installed Packages/Package Control.sublime-package"
-
-- name: Ensure Sublime Package Control Packages are configured.
-  template:
-    src: templates/Package_Control.sublime-settings.j2
-    dest: "{{ sublime_base_path }}/{{ sublime_config_path }}/Package Control.sublime-settings"
-
-- name: Ensure Sublime text user Preferences and theme are set.
-  copy:
-    src: "files/sublime/{{ item }}"
-    dest: "{{ sublime_base_path }}/{{ sublime_config_path }}/{{ item }}"
-  loop:
-    - "Cobalt (SL).tmTheme"
-    - "Markdown.sublime-settings"
-    - "Plain text.sublime-settings"
-    - "Preferences.sublime-settings"
-    - "WordCount.sublime-settings"
+- name: Install deno
+  ansible.builtin.shell: |
+    sh -c "$(curl -fsSL https://deno.land/install.sh)"
+  when: not ansible_check_mode and deno_check.rc != 0
+  tags: [deno]
 </file>
 
-<file path="templates/Package_Control.sublime-settings.j2">
-{
-	"auto_upgrade_last_run": null,
-	"bootstrapped": true,
-	"in_process_packages":
-	[
-	],
-	"installed_packages":
-	[
-{% for package in sublime_package_control %}
-  "{{ package }}"{% if not loop.last %},{% endif %}
-{% endfor %}
-],
-}
+<file path="tasks/google-cloud-sdk.yml">
+---
+- name: Install Google Cloud SDK
+  command: gcloud components install gke-gcloud-auth-plugin --quiet
+  tags: [google-cloud-sdk]
+</file>
+
+<file path="tasks/trackpad.yml">
+---
+- name: Configure trackpad settings
+  command: "{{ item }}"
+  with_items:
+    # Enable tap to click
+    - defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+    - /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    
+    # Set tracking speed (0-3, where 3 is fastest)
+    - defaults write -g com.apple.trackpad.scaling -float 1
+    
+    # Set click pressure (0-1, where 1 is lightest)
+    - defaults write -g com.apple.trackpad.forceClick -float 0.5
+  changed_when: false
+  tags: ['trackpad']
 </file>
 
 <file path="tests/inventory">
@@ -1113,35 +1107,19 @@ ignore: |
   .github/stale.yml
 </file>
 
-<file path=".github/FUNDING.yml">
-# These are supported funding model platforms
+<file path="tasks/omzsh.yml">
 ---
-github: geerlingguy
-patreon: geerlingguy
-</file>
+- name: Check if oh-my-zsh exists
+  stat:
+    path: "{{ ansible_env.HOME }}/.oh-my-zsh"
+  register: oh_my_zsh_dir
+  tags: [omzsh]
 
-<file path="tasks/sudoers.yml">
----
-# If the user installs GNU sed through homebrew the path is different.
-- name: Register path to sed.
-  command: which sed
-  register: sed_which_result
-  changed_when: false
-  when: sed_path is undefined
-
-- name: Define sed_path variable.
-  set_fact:
-    sed_path: "{{ sed_which_result.stdout }}"
-  when: sed_path is undefined
-
-# Sudoers configuration.
-- name: Copy sudoers configuration into place.
-  copy:
-    content: "{{ sudoers_custom_config }}"
-    dest: /private/etc/sudoers.d/custom
-    mode: 0440
-    validate: 'visudo -cf %s'
-  become: true
+- name: Install omzsh
+  ansible.builtin.shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  when: not ansible_check_mode and not oh_my_zsh_dir.stat.exists
+  tags: [omzsh]
 </file>
 
 <file path="tests/ansible.cfg">
@@ -1685,6 +1663,329 @@ git clone git://github.com/scrooloose/nerdtree.git
 127.0.0.1  ansible_connection=local
 </file>
 
+<file path="tasks/karabiner.yml">
+---
+- name: Create Karabiner-Elements configuration directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/karabiner"
+    state: directory
+    mode: '0755'
+  tags: [karabiner]
+
+- name: Create Karabiner-Elements configuration file
+  tags: [karabiner]
+  copy:
+    dest: "{{ ansible_env.HOME }}/.config/karabiner/karabiner.json"
+    mode: '0644'
+    content: |
+      {
+        "profiles": [
+          {
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": [
+              {
+                "from": {
+                  "key_code": "caps_lock"
+                },
+                "to": {
+                  "key_code": "escape"
+                }
+              }
+            ]
+          },
+          "complex_modifications": [
+            {
+              "parameters": {
+                "simultaneous_threshold_milliseconds": 130
+              },
+              "title": "Vi Mode (rev 5)",
+              "rules": [
+                {
+                  "description": "Vi Mode [S as Trigger Key]",
+                  "manipulators": [
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "down_arrow",
+                          "modifiers": []
+                        }
+                      ],
+                      "conditions": [
+                        {
+                          "type": "variable_if",
+                          "name": "vi_mode",
+                          "value": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "from": {
+                        "simultaneous": [
+                          {
+                            "key_code": "s"
+                          },
+                          {
+                            "key_code": "j"
+                          }
+                        ],
+                        "simultaneous_options": {
+                          "key_down_order": "strict",
+                          "key_up_order": "strict_inverse",
+                          "detect_key_down_uninterruptedly": true,
+                          "to_after_key_up": [
+                            {
+                              "set_variable": {
+                                "name": "vi_mode",
+                                "value": 0
+                              }
+                            }
+                          ]
+                        },
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "set_variable": {
+                            "name": "vi_mode",
+                            "value": 1
+                          }
+                        },
+                        {
+                          "key_code": "down_arrow",
+                          "modifiers": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "up_arrow",
+                          "modifiers": []
+                        }
+                      ],
+                      "conditions": [
+                        {
+                          "type": "variable_if",
+                          "name": "vi_mode",
+                          "value": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "from": {
+                        "simultaneous": [
+                          {
+                            "key_code": "s"
+                          },
+                          {
+                            "key_code": "k"
+                          }
+                        ],
+                        "simultaneous_options": {
+                          "key_down_order": "strict",
+                          "key_up_order": "strict_inverse",
+                          "detect_key_down_uninterruptedly": true,
+                          "to_after_key_up": [
+                            {
+                              "set_variable": {
+                                "name": "vi_mode",
+                                "value": 0
+                              }
+                            }
+                          ]
+                        },
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "set_variable": {
+                            "name": "vi_mode",
+                            "value": 1
+                          }
+                        },
+                        {
+                          "key_code": "up_arrow",
+                          "modifiers": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "h",
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "left_arrow",
+                          "modifiers": []
+                        }
+                      ],
+                      "conditions": [
+                        {
+                          "type": "variable_if",
+                          "name": "vi_mode",
+                          "value": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "from": {
+                        "simultaneous": [
+                          {
+                            "key_code": "s"
+                          },
+                          {
+                            "key_code": "h"
+                          }
+                        ],
+                        "simultaneous_options": {
+                          "key_down_order": "strict",
+                          "key_up_order": "strict_inverse",
+                          "detect_key_down_uninterruptedly": true,
+                          "to_after_key_up": [
+                            {
+                              "set_variable": {
+                                "name": "vi_mode",
+                                "value": 0
+                              }
+                            }
+                          ]
+                        },
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "set_variable": {
+                            "name": "vi_mode",
+                            "value": 1
+                          }
+                        },
+                        {
+                          "key_code": "left_arrow",
+                          "modifiers": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "key_code": "right_arrow",
+                          "modifiers": []
+                        }
+                      ],
+                      "conditions": [
+                        {
+                          "type": "variable_if",
+                          "name": "vi_mode",
+                          "value": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "from": {
+                        "simultaneous": [
+                          {
+                            "key_code": "s"
+                          },
+                          {
+                            "key_code": "l"
+                          }
+                        ],
+                        "simultaneous_options": {
+                          "key_down_order": "strict",
+                          "key_up_order": "strict_inverse",
+                          "detect_key_down_uninterruptedly": true,
+                          "to_after_key_up": [
+                            {
+                              "set_variable": {
+                                "name": "vi_mode",
+                                "value": 0
+                              }
+                            }
+                          ]
+                        },
+                        "modifiers": {
+                          "optional": [
+                            "any"
+                          ]
+                        }
+                      },
+                      "to": [
+                        {
+                          "set_variable": {
+                            "name": "vi_mode",
+                            "value": 1
+                          }
+                        },
+                        {
+                          "key_code": "right_arrow",
+                          "modifiers": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        ]
+      }
+
+- name: Ensure Karabiner-Elements is running
+  command: open -a Karabiner-Elements
+  changed_when: false
+  tags: [karabiner]
+</file>
+
 <file path="requirements.yml">
 ---
 roles:
@@ -1828,14 +2129,6 @@ stdout_callback = yaml
 
 <file path="tasks/extra-packages.yml">
 ---
-- name: Install global Composer packages.
-  composer:
-    command: "{{ (item.state | default('present') == 'absent') | ternary('remove', 'require') }}"
-    arguments: "{{ item.name | default(item) }} {{ item.version | default('@stable') }}"
-    # Ansible 2.4 supports `global_command` making `working_dir` optional.
-    working_dir: "{{ lookup('env', 'COMPOSER_HOME') | default('~/.composer', true) }}"
-  loop: "{{ composer_packages }}"
-
 - name: Install global NPM packages.
   npm:
     name: "{{ item.name | default(item) }}"
@@ -1852,68 +2145,6 @@ stdout_callback = yaml
     version: "{{ item.version | default(omit) }}"
     executable: "{{ item.executable | default('pip3') }}"
   loop: "{{ pip_packages }}"
-
-- name: Install global Ruby gems.
-  gem:
-    name: "{{ item.name | default(item) }}"
-    state: "{{ item.state | default('present') }}"
-    version: "{{ item.version | default(omit) }}"
-    user_install: false
-    executable: "{{ item.executable | default(omit) }}"
-  loop: "{{ gem_packages }}"
-</file>
-
-<file path="main.yml">
----
-- hosts: all
-
-  vars_files:
-    - default.config.yml
-
-  pre_tasks:
-    - name: Include playbook configuration.
-      include_vars: "{{ item }}"
-      with_fileglob:
-        - "{{ playbook_dir }}/config.yml"
-      tags: ['always']
-
-  roles:
-    - role: elliotweiser.osx-command-line-tools
-    - role: geerlingguy.mac.homebrew
-      tags: ['homebrew']
-    - role: geerlingguy.dotfiles
-      when: configure_dotfiles
-      tags: ['dotfiles']
-    - role: geerlingguy.mac.mas
-      when: mas_installed_apps or mas_installed_app_ids
-      tags: ['mas']
-    - role: geerlingguy.mac.dock
-      when: configure_dock
-      tags: ['dock']
-
-  tasks:
-    - import_tasks: tasks/sudoers.yml
-      when: configure_sudoers
-      tags: ['sudoers']
-
-    - import_tasks: tasks/terminal.yml
-      when: configure_terminal
-      tags: ['terminal']
-
-    - import_tasks: tasks/osx.yml
-      when: configure_osx
-      tags: ['osx']
-
-    - import_tasks: tasks/extra-packages.yml
-      tags: ['extra-packages']
-
-    - block:
-        - name: Run configured post-provision ansible task files.
-          include_tasks: "{{ outer_item }}"
-          loop_control:
-            loop_var: outer_item
-          with_fileglob: "{{ post_provision_tasks|default(omit) }}"
-      tags: ['post']
 </file>
 
 <file path="README.md">
@@ -2088,6 +2319,75 @@ This project was created by [Jeff Geerling](https://www.jeffgeerling.com/) (orig
 [link-gh-actions]: https://github.com/geerlingguy/mac-dev-playbook/actions?query=workflow%3ACI
 </file>
 
+<file path="main.yml">
+---
+- hosts: all
+
+  vars_files:
+    - default.config.yml
+
+  pre_tasks:
+    - name: Include playbook configuration.
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ['always']
+
+  roles:
+    - role: elliotweiser.osx-command-line-tools
+    - role: geerlingguy.mac.homebrew
+      tags: ['homebrew']
+    - role: geerlingguy.dotfiles
+      when: configure_dotfiles
+      tags: ['dotfiles']
+    - role: geerlingguy.mac.mas
+      when: mas_installed_apps or mas_installed_app_ids
+      tags: ['mas']
+    - role: geerlingguy.mac.dock
+      when: configure_dock
+      tags: ['dock']
+
+  tasks:
+    - import_tasks: tasks/sudoers.yml
+      when: configure_sudoers
+      tags: ['sudoers']
+
+    - import_tasks: tasks/terminal.yml
+      when: configure_terminal
+      tags: ['terminal']
+
+    - import_tasks: tasks/osx.yml
+      when: configure_osx
+      tags: ['osx']
+
+    - import_tasks: tasks/extra-packages.yml
+      tags: ['extra-packages']
+
+    - import_tasks: tasks/karabiner.yml
+      when: configure_karabiner
+      tags: ['karabiner']
+
+    - import_tasks: tasks/omzsh.yml
+      tags: ['omzsh']
+
+    - import_tasks: tasks/deno.yml
+      tags: ['deno']
+
+    - import_tasks: tasks/google-cloud-sdk.yml
+      tags: ['google-cloud-sdk']
+
+    - import_tasks: tasks/trackpad.yml
+      tags: ['trackpad']
+
+    - block:
+        - name: Run configured post-provision ansible task files.
+          include_tasks: "{{ outer_item }}"
+          loop_control:
+            loop_var: outer_item
+          with_fileglob: "{{ post_provision_tasks|default(omit) }}"
+      tags: ['post']
+</file>
+
 <file path="default.config.yml">
 ---
 downloads: ~/.ansible-downloads/
@@ -2095,6 +2395,7 @@ downloads: ~/.ansible-downloads/
 configure_dotfiles: false
 configure_terminal: false
 configure_osx: false
+configure_karabiner: true
 
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: false
@@ -2109,11 +2410,6 @@ dockitems_persist: []
 #   pos: 5
 
 configure_sudoers: false
-sudoers_custom_config: ''
-# Example:
-# sudoers_custom_config: |
-#   # Allow users in admin group to use sudo with no password.
-#   %admin ALL=(ALL) NOPASSWD: ALL
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
@@ -2135,7 +2431,8 @@ homebrew_installed_packages:
   - git
   - gh 
   - httpie
-  - karabiner-elements
+  - kubectl
+  - kubectx
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -2151,6 +2448,8 @@ homebrew_cask_apps:
   - keeper-password-manager
   - 1password
   - notion
+  - karabiner-elements
+  - google-cloud-sdk
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []
