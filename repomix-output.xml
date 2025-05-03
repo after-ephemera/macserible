@@ -65,6 +65,7 @@ tasks/
   karabiner.yml
   omzsh.yml
   osx.yml
+  pipx.yml
   terminal.yml
   trackpad.yml
 tests/
@@ -144,6 +145,12 @@ issues:
 
   closeComment: >-
     This issue has been closed due to inactivity. If you feel this is in error, please reopen the issue or file a new issue with the relevant details.
+</file>
+
+<file path="tasks/pipx.yml">
+- name: Ensure pipx is on PATH
+  ansible.builtin.command: pipx ensurepath
+  changed_when: false
 </file>
 
 <file path=".gitignore">
@@ -1114,7 +1121,7 @@ ignore: |
     - /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     
     # Set tracking speed (0-3, where 3 is fastest)
-    - defaults write -g com.apple.trackpad.scaling -float 1
+    - defaults write -g com.apple.trackpad.scaling -float 1.5
     
     # Set click pressure (0-1, where 1 is lightest)
     - defaults write -g com.apple.trackpad.forceClick -float 0.5
@@ -2176,10 +2183,6 @@ stdout_callback = yaml
       tags: ['dock']
 
   tasks:
-    - import_tasks: tasks/sudoers.yml
-      when: configure_sudoers
-      tags: ['sudoers']
-
     - import_tasks: tasks/terminal.yml
       when: configure_terminal
       tags: ['terminal']
@@ -2206,6 +2209,9 @@ stdout_callback = yaml
 
     - import_tasks: tasks/trackpad.yml
       tags: ['trackpad']
+
+    - import_tasks: tasks/pipx.yml
+      tags: ['pipx']
 
     - block:
         - name: Run configured post-provision ansible task files.
@@ -2360,47 +2366,48 @@ dockitems_persist: []
 #   path: "/Applications/Sublime Text.app/"
 #   pos: 5
 
-configure_sudoers: false
 
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
-  - zsh
-  - zsh-vi-mode
-  - pyenv
-  - chruby
-  - neovim
-  - tmux
-  - ripgrep
   - bat
-  - tree
+  - chruby
   - eza
-  - node
-  - nvm
-  - kubernetes-cli
   - fd
-  - zoxide
-  - git
   - gh 
+  - git
   - httpie
   - kubectl
   - kubectx
+  - neovim
+  - node
+  - nvm
+  - pipx
+  - pulumi
+  - pyenv
+  - ripgrep
+  - tmux
+  - tree
+  - zoxide
+  - zsh
+  - zsh-vi-mode
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - warp
-  - font-fira-code
-  - notion-calendar
-  - spotify
-  - arc
-  - slack
-  - obsidian
-  - chatgpt
-  - docker
-  - keeper-password-manager
   - 1password
-  - notion
-  - karabiner-elements
+  - arc
+  - chatgpt
+  - discord
+  - docker
+  - font-fira-code
   - google-cloud-sdk
+  - karabiner-elements
+  - keeper-password-manager
+  - notion
+  - notion-calendar
+  - obsidian
+  - slack
+  - telegram
+  - spotify
+  - warp
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []

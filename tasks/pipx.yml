@@ -1,0 +1,3 @@
+- name: Ensure pipx is on PATH
+  ansible.builtin.command: pipx ensurepath
+  changed_when: false

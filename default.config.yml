@@ -18,47 +18,48 @@ dockitems_persist: []
 #   path: "/Applications/Sublime Text.app/"
 #   pos: 5
 
-configure_sudoers: false
 
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
-  - zsh
-  - zsh-vi-mode
-  - pyenv
-  - chruby
-  - neovim
-  - tmux
-  - ripgrep
   - bat
-  - tree
+  - chruby
   - eza
-  - node
-  - nvm
-  - kubernetes-cli
   - fd
-  - zoxide
-  - git
   - gh 
+  - git
   - httpie
   - kubectl
   - kubectx
+  - neovim
+  - node
+  - nvm
+  - pipx
+  - pulumi
+  - pyenv
+  - ripgrep
+  - tmux
+  - tree
+  - zoxide
+  - zsh
+  - zsh-vi-mode
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - warp
-  - font-fira-code
-  - notion-calendar
-  - spotify
-  - arc
-  - slack
-  - obsidian
-  - chatgpt
-  - docker
-  - keeper-password-manager
   - 1password
-  - notion
-  - karabiner-elements
+  - arc
+  - chatgpt
+  - discord
+  - docker
+  - font-fira-code
   - google-cloud-sdk
+  - karabiner-elements
+  - keeper-password-manager
+  - notion
+  - notion-calendar
+  - obsidian
+  - slack
+  - telegram
+  - spotify
+  - warp
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []

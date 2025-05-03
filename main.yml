@@ -26,10 +26,6 @@
       tags: ['dock']
 
   tasks:
-    - import_tasks: tasks/sudoers.yml
-      when: configure_sudoers
-      tags: ['sudoers']
-
     - import_tasks: tasks/terminal.yml
       when: configure_terminal
       tags: ['terminal']
@@ -56,6 +52,9 @@
 
     - import_tasks: tasks/trackpad.yml
       tags: ['trackpad']
+
+    - import_tasks: tasks/pipx.yml
+      tags: ['pipx']
 
     - block:
         - name: Run configured post-provision ansible task files.
