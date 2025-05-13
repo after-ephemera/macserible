@@ -147,12 +147,6 @@ issues:
     This issue has been closed due to inactivity. If you feel this is in error, please reopen the issue or file a new issue with the relevant details.
 </file>
 
-<file path="tasks/pipx.yml">
-- name: Ensure pipx is on PATH
-  ansible.builtin.command: pipx ensurepath
-  changed_when: false
-</file>
-
 <file path=".gitignore">
 *.vagrant
 .DS_Store
@@ -1062,6 +1056,12 @@ patreon: geerlingguy
   tags: [google-cloud-sdk]
 </file>
 
+<file path="tasks/pipx.yml">
+- name: Ensure pipx is on PATH
+  ansible.builtin.command: pipx ensurepath
+  changed_when: false
+</file>
+
 <file path="tests/inventory">
 [local]
 localhost ansible_connection=local
@@ -1109,24 +1109,6 @@ ignore: |
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: not ansible_check_mode and not oh_my_zsh_dir.stat.exists
   tags: [omzsh]
-</file>
-
-<file path="tasks/trackpad.yml">
----
-- name: Configure trackpad settings
-  command: "{{ item }}"
-  with_items:
-    # Enable tap to click
-    - defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-    - /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    
-    # Set tracking speed (0-3, where 3 is fastest)
-    - defaults write -g com.apple.trackpad.scaling -float 1.5
-    
-    # Set click pressure (0-1, where 1 is lightest)
-    - defaults write -g com.apple.trackpad.forceClick -float 0.5
-  changed_when: false
-  tags: ['trackpad']
 </file>
 
 <file path="tests/ansible.cfg">
@@ -1663,6 +1645,24 @@ git clone git://github.com/scrooloose/nerdtree.git
   "trim_automatic_white_space": false,
   "trim_trailing_white_space_on_save": false,
 }
+</file>
+
+<file path="tasks/trackpad.yml">
+---
+- name: Configure trackpad settings
+  command: "{{ item }}"
+  with_items:
+    # Enable tap to click
+    - defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+    - /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    
+    # Set tracking speed (0-3, where 3 is fastest)
+    - defaults write -g com.apple.trackpad.scaling -float 1.5
+    
+    # Set click pressure (0-1, where 1 is lightest)
+    - defaults write -g com.apple.trackpad.forceClick -float 0.5
+  changed_when: false
+  tags: ['trackpad']
 </file>
 
 <file path="inventory">
@@ -2408,6 +2408,8 @@ homebrew_cask_apps:
   - telegram
   - spotify
   - warp
+  - superwhisper
+  - zoom
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []
