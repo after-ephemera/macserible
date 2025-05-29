@@ -21,11 +21,14 @@ dockitems_persist: []
 
 homebrew_installed_packages:
   - bat
+  - oven-sh/bun/bun
   - chruby
   - eza
   - fd
+  - fzf
   - gh 
   - git
+  - go
   - httpie
   - kubectl
   - kubectx
@@ -38,6 +41,7 @@ homebrew_installed_packages:
   - ripgrep
   - tmux
   - tree
+  - watch
   - zoxide
   - zsh
   - zsh-vi-mode
