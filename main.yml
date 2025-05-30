@@ -35,7 +35,7 @@
       tags: ['osx']
 
     - import_tasks: tasks/extra-packages.yml
-      tags: ['extra-packages']
+      tags: ['extra-packages', 'npm']
 
     - import_tasks: tasks/karabiner.yml
       when: configure_karabiner

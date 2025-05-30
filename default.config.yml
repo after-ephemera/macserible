@@ -75,7 +75,7 @@ mas_password: ""
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
 # installed, eg. through homebrew.
-npm_packages: ["corepack"]
+npm_packages: ["corepack", "vercel"]
 # - name: webpack
 #   state: present # present/absent/latest, default: present
 #   version: "^2.6" # default: N/A

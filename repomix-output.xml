@@ -2315,6 +2315,15 @@ jobs:
   changed_when: false
 </file>
 
+<file path="ansible.cfg">
+[defaults]
+nocows = True
+roles_path = ./roles:/etc/ansible/roles
+inventory = inventory
+become = true
+stdout_callback = yaml
+</file>
+
 <file path="tasks/terminal.yml">
 ---
 # Custom Terminal theme.
@@ -2344,15 +2353,6 @@ jobs:
     - defaults write com.apple.terminal 'Startup Window Settings' -string JJG-Term
   changed_when: false
   when: "'JJG-Term' not in terminal_theme.stdout"
-</file>
-
-<file path="ansible.cfg">
-[defaults]
-nocows = True
-roles_path = ./roles:/etc/ansible/roles
-inventory = inventory
-become = true
-stdout_callback = yaml
 </file>
 
 <file path="tasks/extra-packages.yml">
@@ -2413,7 +2413,7 @@ stdout_callback = yaml
       tags: ['osx']
 
     - import_tasks: tasks/extra-packages.yml
-      tags: ['extra-packages']
+      tags: ['extra-packages', 'npm']
 
     - import_tasks: tasks/karabiner.yml
       when: configure_karabiner
@@ -2644,7 +2644,7 @@ mas_password: ""
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
 # installed, eg. through homebrew.
-npm_packages: ["corepack"]
+npm_packages: ["corepack", "vercel"]
 # - name: webpack
 #   state: present # present/absent/latest, default: present
 #   version: "^2.6" # default: N/A
