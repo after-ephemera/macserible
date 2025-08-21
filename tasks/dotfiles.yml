@@ -1,0 +1,12 @@
+---
+- name: Clone jkcode repo
+  ansible.builtin.git:
+    repo: git@github.com:after-ephemera/jkcode.git
+    dest: "{{ ansible_env.HOME }}/dev/jkcode"
+    version: master
+    force: true
+  tags: [dotfiles]
+
+- name: Install dotfiles
+  command: "{{ ansible_env.HOME }}/dev/jkcode/setup_env"
+  tags: [dotfiles]

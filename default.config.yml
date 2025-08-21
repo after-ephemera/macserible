@@ -31,7 +31,7 @@ homebrew_installed_packages:
   - kubectl
   - kubectx
   - neovim
-  - node
+  - node@22
   - nvm
   - pipx
   - pulumi
@@ -42,6 +42,7 @@ homebrew_installed_packages:
   - tmux
   - tree
   - watch
+  - yt-dlp
   - zoxide
   - zsh
   - zsh-vi-mode
@@ -52,6 +53,7 @@ homebrew_cask_apps:
   - 1password
   - arc
   - chatgpt
+  - cursor
   - discord
   - docker
   - font-fira-code
@@ -63,6 +65,7 @@ homebrew_cask_apps:
   - obsidian
   - slack
   - telegram
+  - thebrowsercompany-dia
   - spotify
   - warp
   - superwhisper

@@ -56,6 +56,9 @@
     - import_tasks: tasks/pipx.yml
       tags: ['pipx']
 
+    - import_tasks: tasks/dotfiles.yml
+      tags: ['dotfiles']
+
     - block:
         - name: Run configured post-provision ansible task files.
           include_tasks: "{{ outer_item }}"
