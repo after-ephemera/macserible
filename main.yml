@@ -59,6 +59,9 @@
     - import_tasks: tasks/dotfiles.yml
       tags: ['dotfiles']
 
+    - import_tasks: tasks/dock.yml
+      tags: ['dock']
+
     - block:
         - name: Run configured post-provision ansible task files.
           include_tasks: "{{ outer_item }}"
