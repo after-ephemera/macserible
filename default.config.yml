@@ -6,14 +6,45 @@ configure_terminal: false
 configure_osx: false
 configure_karabiner: true
 
-# Set to 'true' to configure the Dock via dockutil.
-configure_dock: false
-dockitems_remove: []
-# - Launchpad
-# - TV
-# - Podcasts
-# - 'App Store'
-dockitems_persist: []
+dockutil_install: true
+configure_dock: true
+dockitems_remove: 
+  - "Launchpad"
+  - "TV"
+  - "Podcasts"
+  - "App Store"
+  - "Music"
+  - "Photos"
+  - "Calendar"
+  - "Maps"
+  - "FaceTime"
+  - "News"
+  - "Freeform"
+  - "Contacts"
+  - "Mail"
+  - "Safari"
+  - "Reminders"
+  - "iPhone Mirroring"
+  - "Notes"
+  - "Messages"
+  - "System Settings"
+dockitems_persist: 
+  - name: "Dia"
+    path: "/Applications/Dia.app"
+  - name: "Messages"
+    path: "/Applications/Messages.app"
+  - name: "Notion Calendar"
+    path: "/Applications/Notion Calendar.app"
+  - name: "Obsidian"
+    path: "/Applications/Obsidian.app"
+  - name: "Warp"
+    path: "/Applications/Warp.app"
+  - name: "Cursor"
+    path: "/Applications/Cursor.app"
+  - name: "iPhone Mirroring"
+    path: "/Applications/iPhone Mirroring.app"
+  - name: "System Settings"
+    path: "/Applications/System Settings.app"
 
 homebrew_taps:
   - creativeprojects/tap

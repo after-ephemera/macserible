@@ -2,10 +2,12 @@
 
 - name: Make dock icons smaller
   command: |
-    defaults write com.apple.dock tilesize -int 36
-    killall Dock
+    defaults write com.apple.dock tilesize -int 32
 
 - name: Make the dock autohide
   command: |
-    defaults write com.apple.dock autohide -bool true
+    defaults write com.apple.dock autohide -bool true 
+
+- name: Restart dock
+  command: |
     killall Dock
