@@ -24,5 +24,19 @@
   when: not mpluginmanager_stat.stat.exists
   tags: [audiounit]
 
+- name: Check if NeuralAmpModeler is installed
+  ansible.builtin.stat:
+    path: /Applications/NeuralAmpModeler.app
+  register: neuralampmodeler_stat
 
+- name: Download NeuralAmpModeler Mac installer using the gh cli
+  ansible.builtin.command: |
+    gh release download -R sdatkinson/NeuralAmpModelerPlugin --pattern "NeuralAmpModeler-*.dmg" --dir /tmp/NeuralAmpModeler-macos.dmg
+  when: not neuralampmodeler_stat.stat.exists
+  tags: [audiounit]
 
+- name: Start NeuralAmpModeler Installer
+  ansible.builtin.command: |
+    open /tmp/NeuralAmpModeler-macos.dmg
+  when: not neuralampmodeler_stat.stat.exists
+  tags: [audiounit]
