@@ -1,0 +1,14 @@
+---
+- name: Install packer
+  ansible.builtin.git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    version: master
+    force: true
+    depth: 1
+  tags: [nvim]
+
+- name: Install packer plugins
+  ansible.builtin.command: "nvim --headless +PackerInstall +qall"
+  tags: [nvim]
+  

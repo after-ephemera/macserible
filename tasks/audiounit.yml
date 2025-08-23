@@ -1,0 +1,28 @@
+---
+- name: Check if MPluginManager is installed
+  ansible.builtin.stat:
+    path: /Applications/MeldaProduction/MPluginManager.app
+  register: mpluginmanager_stat
+
+- name: Download MPluginManager Mac installer
+  ansible.builtin.get_url:
+    url: "https://www.meldaproduction.com/downloads/down?name=MPluginManager_02_12_setupmac.zip&platform=mac&version=02.12&mirror=bunnycdn&url=https%3A%2F%2Fmeldaproduction.b-cdn.net%2Fdownload%2Fmpluginmanager%2FMPluginManager_02_12_setupmac.zip&checksum=49c5e5ef5c7510a69d285a1268999f6c758ed32c"
+    dest: "/tmp/MPluginManager_Mac.zip"
+    mode: '0644'
+  when: not mpluginmanager_stat.stat.exists
+  tags: [audiounit]
+
+- name: Unzip MPluginManager Installer
+  ansible.builtin.command: |
+    open /tmp/MPluginManager_Mac.zip
+  when: not mpluginmanager_stat.stat.exists
+  tags: [audiounit]
+
+- name: Start MPluginManager Installer
+  ansible.builtin.command: |
+    open /tmp/MPluginManager_02_12_setupmac 2.pkg
+  when: not mpluginmanager_stat.stat.exists
+  tags: [audiounit]
+
+
+

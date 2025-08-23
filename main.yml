@@ -62,6 +62,12 @@
     - import_tasks: tasks/dock.yml
       tags: ['dock']
 
+    - import_tasks: tasks/nvim.yml
+      tags: ['nvim']
+
+    - import_tasks: tasks/audiounit.yml
+      tags: ['audiounit']
+
     - block:
         - name: Run configured post-provision ansible task files.
           include_tasks: "{{ outer_item }}"

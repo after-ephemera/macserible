@@ -31,20 +31,28 @@ dockitems_remove:
 dockitems_persist: 
   - name: "Dia"
     path: "/Applications/Dia.app"
+    pos: 1
   - name: "Messages"
     path: "/Applications/Messages.app"
+    pos: 2
   - name: "Notion Calendar"
     path: "/Applications/Notion Calendar.app"
+    pos: 3
   - name: "Obsidian"
     path: "/Applications/Obsidian.app"
+    pos: 4
   - name: "Warp"
     path: "/Applications/Warp.app"
+    pos: 5
   - name: "Cursor"
     path: "/Applications/Cursor.app"
+    pos: 6
   - name: "iPhone Mirroring"
     path: "/Applications/iPhone Mirroring.app"
+    pos: 7
   - name: "System Settings"
     path: "/Applications/System Settings.app"
+    pos: 8
 
 homebrew_taps:
   - creativeprojects/tap
@@ -59,6 +67,7 @@ homebrew_installed_packages:
   - git
   - go
   - httpie
+  - keeper-commander
   - kubectl
   - kubectx
   - neovim
@@ -91,6 +100,7 @@ homebrew_cask_apps:
   - google-cloud-sdk
   - karabiner-elements
   - keeper-password-manager
+  - native-access
   - notion
   - notion-calendar
   - obsidian
