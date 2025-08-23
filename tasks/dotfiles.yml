@@ -9,4 +9,6 @@
 
 - name: Install dotfiles
   command: "{{ ansible_env.HOME }}/dev/jkcode/setup_env"
+  # only do this once
+  when: not ansible_local.stat.stat('{{ ansible_env.HOME }}/.config/nvim/init.lua').exists
   tags: [dotfiles]
