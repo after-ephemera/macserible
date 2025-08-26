@@ -60,6 +60,7 @@ homebrew_installed_packages:
   - bat
   - oven-sh/bun/bun
   - chruby
+  - deno
   - eza
   - fd
   - fzf

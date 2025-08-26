@@ -44,9 +44,6 @@
     - import_tasks: tasks/omzsh.yml
       tags: ['omzsh']
 
-    - import_tasks: tasks/deno.yml
-      tags: ['deno']
-
     - import_tasks: tasks/google-cloud-sdk.yml
       tags: ['google-cloud-sdk']
 
