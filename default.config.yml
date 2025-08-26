@@ -81,6 +81,7 @@ homebrew_installed_packages:
   - resticprofile 
   - tmux
   - tree
+  - uv
   - watch
   - yt-dlp
   - zoxide
