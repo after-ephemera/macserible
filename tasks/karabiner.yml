@@ -543,3 +543,9 @@
   command: open -a Karabiner-Elements
   changed_when: false
   tags: [karabiner]
+
+- name: change keyboard backlight timeout to 5s
+  command: |
+    defaults write com.apple.BezelServices kDimTime -int 5
+  changed_when: false
+  tags: [karabiner]
