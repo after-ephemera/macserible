@@ -66,12 +66,14 @@ homebrew_installed_packages:
   - fzf
   - gh 
   - git
+  - git-lfs
   - go
   - httpie
   - keeper-commander
   - kubectl
   - kubectx
   - neovim
+  - ngrok
   - node@22
   - nvm
   - pipx
@@ -94,7 +96,9 @@ homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - 1password
   - arc
+  - chatbox
   - chatgpt
+  - claude
   - cursor
   - discord
   - docker
@@ -102,10 +106,12 @@ homebrew_cask_apps:
   - google-cloud-sdk
   - karabiner-elements
   - keeper-password-manager
+  - linear-linear
   - native-access
   - notion
   - notion-calendar
   - obsidian
+  - ollama-app
   - slack
   - telegram
   - thebrowsercompany-dia

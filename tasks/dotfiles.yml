@@ -7,8 +7,15 @@
     force: true
   tags: [dotfiles]
 
+- name: Check if nvim init.lua exists
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.config/nvim/init.lua"
+  register: nvim_init_lua_stat
+  changed_when: false
+  tags: [dotfiles]
+
 - name: Install dotfiles
   command: "{{ ansible_env.HOME }}/dev/jkcode/setup_env"
   # only do this once
-  when: not ansible_local.stat.stat('{{ ansible_env.HOME }}/.config/nvim/init.lua').exists
+  when: not nvim_init_lua_stat.stat.exists
   tags: [dotfiles]
